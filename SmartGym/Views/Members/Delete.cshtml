@@ -1,0 +1,92 @@
+﻿@model SmartGym.Models.Member
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+    <div class="container">
+        <h3>Are you sure you want to cancel @Html.DisplayFor(model => model.name)'s gym membership?</h3>
+        <div>
+            <h4>Gym Profile</h4>
+            <hr />
+            <h4 class="text-danger"><b> Cancelation fee: R4800</b>
+            </h4>
+            <dl class="dl-horizontal">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.surname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.surname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.sa_id)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.sa_id)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.phone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.phone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.memberShip)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.memberShip)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.joinDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.joinDate)
+                </dd>
+
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Cancel Membership" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>

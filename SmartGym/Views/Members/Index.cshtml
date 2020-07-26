@@ -1,0 +1,107 @@
+﻿@model IEnumerable<SmartGym.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+
+    <h3>Member Manager</h3>
+
+    <p>
+        @Html.ActionLink("Add Member", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Session Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.surname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.sa_id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.phone)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.address)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.memberShip)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.joinDate)
+                            </th>
+                            <th>
+                                Edit
+                            </th>
+                            <th>
+                                Details
+                            </th>
+                            <th>
+                                Cancelation
+                            </th>
+         
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.surname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.sa_id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.memberShip)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.joinDate)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.memId }, htmlAttributes: new { @class = "btn btn-primary" }) 
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.memId }, htmlAttributes: new { @class = "btn btn-success" }) 
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Cancel Membership", "Delete", new { id = item.memId }, htmlAttributes: new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

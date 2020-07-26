@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SmartGym.Models.Health>
+
+@{
+    ViewBag.Title = "HealthReport";
+}
+
+    <div class="container">
+        <h2>Health Report</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.height)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.weight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BMI)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.imageUrl)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.updated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HealthRange.name)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.height)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.weight)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BMI)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imageUrl)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.updated)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HealthRange.name)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>

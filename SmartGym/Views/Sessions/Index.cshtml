@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SmartGym.Models.Session>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+
+    <h3>Session Manager</h3>
+
+    <p>
+        @Html.ActionLink("Add Session", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Session Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Member.name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.sessionDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.satisfaction)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.usage)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Activity.description)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Member.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.sessionDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.satisfaction)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.usage)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Activity.description)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new {  id=item.id}, htmlAttributes: new { @class = "btn btn-primary" }) 
+                                @Html.ActionLink("Details", "Details", new {  id=item.id }, htmlAttributes: new { @class = "btn btn-success" }) 
+                                @Html.ActionLink("Delete", "Delete", new {  id=item.id  }, htmlAttributes: new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

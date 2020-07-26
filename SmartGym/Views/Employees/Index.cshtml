@@ -1,0 +1,99 @@
+﻿@model IEnumerable<SmartGym.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+
+    <h3>Employee Manager</h3>
+
+    <p>
+        @Html.ActionLink("Add Employee", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Session Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.surname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.phone)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.address)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.postalCode)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.salary)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.hireDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Designation.activityCode)
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.surname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.postalCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.hireDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Designation.activityCode)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.id }, htmlAttributes: new { @class="btn btn-primary"}) 
+                                    @Html.ActionLink("Details", "Details", new { id = item.id }, htmlAttributes: new { @class="btn btn-success"}) 
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.id }, htmlAttributes: new { @class="btn btn-danger"})
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

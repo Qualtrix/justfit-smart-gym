@@ -1,0 +1,95 @@
+﻿@model SmartGym.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+    <div class="container">
+        <div>
+            <h4>Employee Details</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.surname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.surname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.phone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.phone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.postalCode)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.postalCode)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.salary)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.salary)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.hireDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.hireDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.password)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Designation.activityCode)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Designation.activityCode)
+                </dd>
+
+            </dl>
+        </div>
+
+    </div>

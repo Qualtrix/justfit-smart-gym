@@ -1,0 +1,50 @@
+﻿@model SmartGym.Models.Session
+
+@{
+    ViewBag.Title = "Details";
+}
+
+    <div class="container">
+        <div>
+            <h4>Session Manager</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.satisfaction)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.satisfaction)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.usage)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.usage)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Activity.description)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Activity.description)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Member.name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Member.name)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }, htmlAttributes: new { @class = "btn btn-primary" }) 
+        </p>
+
+    </div>

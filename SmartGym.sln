@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGym", "SmartGym\SmartGym.csproj", "{FA7F189C-0442-4F44-B7F9-E26707349B33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartGym.Tests", "SmartGym.Tests\SmartGym.Tests.csproj", "{561892F2-EA49-4E8F-A24E-AEBE2FE7F78E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA7F189C-0442-4F44-B7F9-E26707349B33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7F189C-0442-4F44-B7F9-E26707349B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA7F189C-0442-4F44-B7F9-E26707349B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7F189C-0442-4F44-B7F9-E26707349B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561892F2-EA49-4E8F-A24E-AEBE2FE7F78E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561892F2-EA49-4E8F-A24E-AEBE2FE7F78E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561892F2-EA49-4E8F-A24E-AEBE2FE7F78E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561892F2-EA49-4E8F-A24E-AEBE2FE7F78E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A395F02-EE7B-48C9-AA36-D174D12BE001}
+	EndGlobalSection
+EndGlobal

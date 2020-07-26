@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SmartGym.Models.Invoice>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+
+    <h3>Invoice Manager</h3>
+
+    <p>
+        @Html.ActionLink("Add Member", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Invoice Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.invoiceDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.total)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Member.name)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.invoiceDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.total)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Member.name)
+                                </td>
+                                <td>
+                                    <!-- @@Html.ActionLink("Edit", "Edit", new { id = item.invoiceNo }) -->
+                                    @Html.ActionLink("Details", "Details", new { id = item.invoiceNo }, htmlAttributes: new { @class = "btn btn-success" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.invoiceNo }, htmlAttributes: new { @class = "btn btn-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

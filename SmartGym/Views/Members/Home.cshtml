@@ -1,0 +1,847 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+<head>
+    <title>Member</title>
+    <link href="~/Content/MemberStyles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="menu-column">
+            <ul class="nav">
+                <li class="pulse"></li>
+                <li class="chat"></li>
+                <li class="calendar"></li>
+                <li class="clipboard"></li>
+                <li class="settings"></li>
+            </ul>
+            <div class="profile"><img src="https://placeimg.com/100/100/face" /></div>
+        </div>
+        <div class="summary-column">
+            <div class="profile-img" id="profileImage">
+                <img src="https://placeimg.com/400/400/face" />
+                <div class="name">Jana <br> Novakova</div>
+            </div>
+            <div class="statistics">
+                <h2>summary</h2>
+                <div class="age"><span class="title title-age">22</span></div>
+                <div class="weight"><span class="title title-weight">53 kg</span></div>
+                <div class="float-none"></div>
+                <div class="height">
+                    <div class="icon"></div>
+                    <div class="data"><span>172 cm</span></div>
+                </div>
+                <div class="bmi"><span class="title title-bmi">20.4</span></div>
+                <div class="fat">
+                    <span class="title title-fat">11<span class="percentage">%</span></span>
+                </div>
+                <div class="float-none"></div>
+                <h2 class="allergies">allergies</h2>
+                <div class="row">
+                    peanuts
+                    <div class="severity">
+                        <div class="fill" style="width: 45%; height: inherit;"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    penicilin
+                    <div class="severity">
+                        <div class="fill" style="width: 80%; height: inherit;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-column">
+            <div class="header-container" id="headerContainer">
+                <div class="nav">
+                    <div class="content">
+                        <p> hi <span class="name">jana</span>, it seems you are in</p><span class="shape score">good</span><span class="shape"> shape</span>
+                    </div>
+                </div>
+                <div class="select-boxes">
+                    <div class="content">
+                        <div class="select-wrapper"><select><option>Bl. Pressure</option></select></div>
+                        <div class="select-wrapper"><select><option>Today</option></select></div>
+                    </div>
+                </div>
+                <div class="float-none"></div>
+                <div class="graph"><canvas id="bpChart" style="position: relative; z-index: 100;"></canvas></div>
+            </div>
+            <div class="split-container">
+                <div class="split">
+                    <h3>Temperature</h3>
+                    <div class="temperature">36.7</div>
+                    <div class="split-graph"><canvas id="temperatureGraph"></canvas></div>
+                </div>
+                <div class="split">
+                    <h3>Calories burned</h3>
+                    <div class="calories">537</div>
+                    <div class="split-graph"><canvas id="calorieGraph"></canvas></div>
+                </div>
+                <div class="split">
+                    <h3>Heart rate</h3>
+                    <div class="heart-rate">87</div>
+                    <div class="split-graph"><canvas id="heartRateGraph"></canvas></div>
+                </div>
+            </div>
+            <div class="sleep">
+                <div class="totals">
+                    <div class="collective">
+                        <span class="hours">8</span><span class="minutes">25</span>
+                        <p>Total sleep time</p>
+                    </div>
+                    <div class="split first">
+                        6h 12m
+                        <p>Deep</p>
+                    </div>
+                    <div class="split">
+                        2h 13m
+                        <p>Light</p>
+                    </div>
+                </div>
+                <div class="sleep-graph">
+                    <div class="sleep-graph-container">
+                        <h2> Sleep Analytics</h2>
+                        <div class="sleep-select-wrapper"><select><option value="today">Today</option></select></div>
+                        <div class="chart-container"><canvas id="sleepChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+            <div class="float-none"></div>
+            <div class="split-container">
+                <div class="split bottom">
+                    <h2>Appointments</h2>
+                    <div class="appointments">
+                        <div class="calendar-container">
+                            <div class="calendar">25<span class="date">th</span><span class="month">Jul</span></div>
+                            <div class="content">
+                                <table class="appointment-table">
+                                    <tr>
+                                        <td id="time">13:00</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="title">Dentist</td>
+                                    </tr>
+                                    <tr>
+                                        <td id="name">Jozef Novotny</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="split bottom">
+                    <h2>Doctors around</h2>
+                    <table class="doctor-grid">
+                        <tr>
+                            <td height="65"><img src="https://placeimg.com/65/65/people" /></td>
+                            <td><img src="https://placeimg.com/65/65/face" /></td>
+                            <td><img src="https://placeimg.com/65/65/people" /></td>
+                        </tr>
+                        <tr>
+                            <td><img src="https://placeimg.com/65/65/face" /></td>
+                            <td><img src="https://placeimg.com/65/65/people" /></td>
+                            <td id="expand">
+                                <div class="background">
+                                    +8
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="split bottom">
+                    <div id="map"></div>
+                    <div class="map-overlay">
+                        <h2>Steps today</h2><span class="steps">4578</span><span class="distance">1.7 km</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-column">
+            <div class="search-container"><img src="https://svgshare.com/i/56w.svg" /><input type="text" placeholder="Search" /></div>
+            <div class="activity-list">
+                <h3>Recent Activity</h3>
+                <div class="activity">
+                    <div class="image-container"><img src="https://placeimg.com/40/40/face" /></div>
+                    <div class="text"><span class="name">Peter Smith </span>added a new appointment to your calendar.<span class="time-ago">2 hours ago</span></div>
+                </div>
+                <div class="activity">
+                    <div class="image-container"><img src="https://placeimg.com/40/40/person" /></div>
+                    <div class="text"><span class="name">Katarina Rychia </span>commented on your Results 09<span class="time-ago">2 hours ago</span></div>
+                </div>
+                <div class="activity">
+                    <div class="image-container"><img src="https://placeimg.com/40/40/face" /></div>
+                    <div class="text"><span class="name">Tereza Dvorak </span>added two attachments to Results 238.<span class="time-ago">6 days ago</span></div>
+                </div>
+                <div class="activity">
+                    <div class="image-container"><img src="https://placeimg.com/40/40/person" /></div>
+                    <div class="text"><span class="name">Peter Smith </span>added a new appointment to your calendar.<span class="time-ago">7 days ago</span></div>
+                </div>
+                <div class="your-doctors">
+                    <h3>Your Doctors</h3>
+                    <div class="doctor">
+                        <div class="image-container"><img src="https://placeimg.com/40/40/person" /></div>
+                        <div class="text"><span class="name-large">Peter Smith</span><span class="title">Dentist</span></div>
+                    </div>
+                    <div class="doctor">
+                        <div class="image-container"><img src="https://placeimg.com/40/40/face" /></div>
+                        <div class="text"><span class="name-large">Katarina Rychia </span><span class="title">Dentist</span></div>
+                    </div>
+                    <div class="doctor">
+                        <div class="image-container"><img src="https://placeimg.com/40/40/person" /></div>
+                        <div class="text"><span class="name-large">Tereza Dvorak </span><span class="title">Physician</span></div>
+                    </div><button class="find-doctor">Find new doctor</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        // Blood Pressure Chart
+        let bloodPressureChart = document.getElementById('bpChart').getContext('2d')
+        let gradient = bloodPressureChart.createLinearGradient(0, 0, 0, 100)
+        gradient.addColorStop(0, "#29a9e1")
+        gradient.addColorStop(1, "#2ccec2")
+
+        let chart = new Chart(bloodPressureChart, {
+            type: 'line',
+            // The data for our dataset
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "Blood Pressure",
+                    backgroundColor: gradient,
+                    borderColor: 'transparent',
+                    data: [105, 112, 105, 120, 110, 119, 110],
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                    point: {
+                        radius: 2
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (vlaue, index, values) {
+                                return null
+                            }
+                        }
+                    }],
+                    yAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (vlaue, index, values) {
+                                return null
+                            },
+                            suggestedMin: 100
+                        }
+                    }]
+                }
+            }
+        })
+
+        // Sleep Chart
+        let sleepChartContainer = document.getElementById('sleepChart').getContext('2d')
+        let sleepChartGradient = sleepChartContainer.createLinearGradient(0, 0, 400, 0)
+        sleepChartGradient.addColorStop(0, "#44D1CA")
+        sleepChartGradient.addColorStop(1, "#28A3D0")
+
+        let sleepChartBackgroundGradient = sleepChartContainer.createLinearGradient(0, 0, 400, 0)
+        sleepChartBackgroundGradient.addColorStop(0, "rgba(68, 209, 202, 0.1)")
+        sleepChartBackgroundGradient.addColorStop(1, "rgba(40, 163, 208, 0.1)")
+
+        let sleepChart = new Chart(sleepChartContainer, {
+            type: 'line',
+            // The data for our dataset
+            data: {
+                labels: ["22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "1", "2", "3"],
+                datasets: [{
+                    label: "Hours of sleep",
+                    backgroundColor: sleepChartBackgroundGradient,
+                    borderColor: sleepChartGradient,
+                    data: [7.5, 6.7, 7.8, 8.2, 6.7, 6.5, 8.2, 7.5, 8.2, 6.9, 7.2, 7.5, 6.9],
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                elements: {
+                    point: {
+                        radius: 2
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: true,
+                            color: "#F3F4F4"
+                        },
+                        ticks: {
+                            fontColor: "#BDC3C6"
+                        }
+                    }],
+                    yAxes: [{
+                        maxBarThickness: 1,
+                        gridLines: {
+                            drawBorder: true,
+                            display: false,
+                            color: "#F3F4F4"
+                        },
+                        ticks: {
+                            callback: function (value, index, values) {
+                                return null
+                            },
+                            suggestedMin: 6
+                        }
+                    }]
+                }
+            }
+        })
+
+        // Temperature Chart
+        let temperatureChartContainer = document.getElementById('temperatureGraph').getContext('2d')
+        let temperatureGradient = temperatureChartContainer.createLinearGradient(0, 0, 100, 0)
+        temperatureGradient.addColorStop(0, "#feb35e")
+        temperatureGradient.addColorStop(1, "#fe8550")
+        let temperatureChart = new Chart(temperatureChartContainer, {
+            type: 'line',
+            // The data for our dataset
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: gradient,
+                    borderColor: temperatureGradient,
+                    fill: false,
+                    data: [105, 108, 105, 110, 108, 105, 110],
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                tooltips: {
+                    enabled: true
+                },
+                elements: {
+                    point: {
+                        radius: 0
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (vlaue, index, values) {
+                                return null
+                            }
+                        }
+                    }],
+                    yAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (vlaue, index, values) {
+                                return null
+                            },
+                            suggestedMin: 100
+                        }
+                    }]
+                }
+            }
+        })
+
+        // Calorie Chart
+        let calorieChartContainer = document.getElementById('calorieGraph').getContext('2d')
+        let calorieChartGradient = calorieChartContainer.createLinearGradient(0, 0, 100, 0)
+        calorieChartGradient.addColorStop(0, "#03d7a6")
+        calorieChartGradient.addColorStop(1, "#22b6d1")
+        let calorieChart = new Chart(calorieChartContainer, {
+            type: 'line',
+            // The data for our dataset
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: gradient,
+                    borderColor: calorieChartGradient,
+                    fill: false,
+                    data: [105, 108, 115, 105, 110, 112, 109],
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                tooltips: {
+                    enabled: true
+                },
+                elements: {
+                    point: {
+                        radius: 0
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (vlaue, index, values) {
+                                return null
+                            }
+                        }
+                    }],
+                    yAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (vlaue, index, values) {
+                                return null
+                            },
+                            suggestedMin: 100
+                        }
+                    }]
+                }
+            }
+        })
+
+        // Heart Rate Chart
+        let heartRateChartContainer = document.getElementById('heartRateGraph').getContext('2d')
+        let heartRateChartGradient = heartRateChartContainer.createLinearGradient(0, 0, 100, 0)
+        heartRateChartGradient.addColorStop(0, "#fd6eb5")
+        heartRateChartGradient.addColorStop(1, "#ca65ff")
+        let heartRateChart = new Chart(heartRateChartContainer, {
+            type: 'line',
+            // The data for our dataset
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June", "July"],
+                datasets: [{
+                    label: "My First dataset",
+                    backgroundColor: gradient,
+                    borderColor: heartRateChartGradient,
+                    fill: false,
+                    data: [105, 108, 109, 115, 108, 105, 104],
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                tooltips: {
+                    enabled: true
+                },
+                elements: {
+                    point: {
+                        radius: 0
+                    }
+                },
+                legend: {
+                    display: false
+                },
+                layout: {
+                    padding: {
+                        left: 0,
+                        right: 0,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (vlaue, index, values) {
+                                return null
+                            }
+                        }
+                    }],
+                    yAxes: [{
+                        maxBarThickness: 0,
+                        gridLines: {
+                            drawBorder: false,
+                            display: false
+                        },
+                        ticks: {
+                            callback: function (vlaue, index, values) {
+                                return null
+                            },
+                            suggestedMin: 100
+                        }
+                    }]
+                }
+            }
+        })
+
+        // Current Position Helper
+        function getLocation() {
+            return new Promise((resolve, reject) => {
+                try {
+                    if (navigator.geolocation) {
+                        navigator.geolocation.getCurrentPosition(function (position) {
+                            resolve(position.coords)
+                        })
+                    } else {
+                        throw Error('Geolocation disabled.')
+                    }
+                } catch (err) {
+                    console.log(err)
+                    reject(err)
+                }
+            })
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            getLocation()
+                .then((coords) => {
+                    googleMapsInit(coords.longitude, coords.latitude)
+                })
+                .catch((err) => {
+                    console.log(err)
+                    googleMapsInit()
+                })
+        })
+
+        // Initiate Google Maps render
+        function googleMapsInit(longitude, latitude) {
+            let map = document.getElementById('map')
+            // Default Lon/Lat to UK if geolocation is disabled
+            if (!longitude || !latitude) {
+                let longitude = 3.4360
+                let latitude = 55.3781
+            }
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: latitude, lng: longitude },
+                zoom: 7,
+                disableDefaultUI: true,
+                styles: [
+                    {
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#f5f5f5"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#616161"
+                            }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                            {
+                                "color": "#f5f5f5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#bdbdbd"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.neighborhood",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#eeeeee"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#757575"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.business",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#e5e5e5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#9e9e9e"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#ffffff"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.arterial",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#757575"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#dadada"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#616161"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "road.local",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#9e9e9e"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "stylers": [
+                            {
+                                "visibility": "off"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#e5e5e5"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#eeeeee"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                            {
+                                "color": "#c9c9c9"
+                            }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                            {
+                                "color": "#9e9e9e"
+                            }
+                        ]
+                    }
+                ]
+            })
+        }
+    </script>
+</body>

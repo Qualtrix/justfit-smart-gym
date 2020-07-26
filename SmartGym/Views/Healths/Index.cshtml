@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SmartGym.Models.Health>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+
+    <h3>Member Manager</h3>
+
+    <p>
+        @Html.ActionLink("Add Member", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Fitness Table</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Member.memId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Member.surname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.height)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.weight)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.BMI)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.healthStatus)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.updated)
+                            </th>
+                            <th>Update</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Member.memId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Member.surname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.height)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.weight)
+                            </td>
+                            <td color="primary">
+                                @Html.DisplayFor(modelItem => item.BMI)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HealthRange.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.updated)
+                            </td>
+                            <td>
+                                @Html.ActionLink("View Report", "HealthReport", new { code = item.memId }, new { @class = "btn btn-success" }) 
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

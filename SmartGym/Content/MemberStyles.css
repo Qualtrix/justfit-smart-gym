@@ -1,0 +1,815 @@
+﻿body {
+    font-family: 'Roboto', sans-serif;
+    background: #7e8b91;
+    margin: 1%;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    width: 100%;
+    min-width: 1180px;
+    margin: auto;
+    justify-content: center;
+}
+
+.menu-column {
+    position: relative;
+    width: 6%;
+    max-width: 50px;
+    background: linear-gradient(#2e96ea, #30c8ca);
+    min-width: 70px;
+}
+
+    .menu-column .profile {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 65px;
+    }
+
+        .menu-column .profile img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .menu-column .profile:after {
+            content: '';
+            display: block;
+            height: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(245, 244, 120, 0.7);
+        }
+
+    .menu-column .nav {
+        list-style-type: none;
+        margin: 0 0 100px;
+        padding: 0;
+    }
+
+        .menu-column .nav li {
+            width: 100%;
+            height: 3.5em;
+            margin: 0;
+        }
+
+            .menu-column .nav li:hover {
+                background-color: #57a8ed;
+                cursor: pointer;
+            }
+
+    .menu-column .pulse, .menu-column .chat, .menu-column .calendar, .menu-column .clipboard, .menu-column .settings {
+        background-image: url("https://svgshare.com/i/4w9.svg");
+        background-position: center;
+        background-size: 25px;
+        background-repeat: no-repeat;
+    }
+
+    .menu-column .chat {
+        background-image: url("https://svgshare.com/i/4uF.svg");
+    }
+
+    .menu-column .calendar {
+        background-image: url("https://svgshare.com/i/4vc.svg");
+    }
+
+    .menu-column .clipboard {
+        background-image: url("https://svgshare.com/i/4wJ.svg");
+    }
+
+    .menu-column .settings {
+        background-image: url("https://svgshare.com/i/4vd.svg");
+    }
+
+.float-none {
+    clear: both;
+}
+
+.summary-column {
+    position: relative;
+    z-index: 2;
+    width: 17%;
+    min-width: 225px;
+    max-width: 300px;
+    background: linear-gradient(#5a89b1, #42656f);
+}
+
+    .summary-column .profile-img {
+        position: relative;
+        height: 331px;
+    }
+
+        .summary-column .profile-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .summary-column .profile-img .name {
+            position: absolute;
+            bottom: 25px;
+            left: 1em;
+            color: white;
+            font-size: 1.5em;
+            font-weight: 300;
+        }
+
+    .summary-column .statistics {
+        margin: 20px 6% 0 6%;
+    }
+
+        .summary-column .statistics h2 {
+            color: #a1afbc;
+            text-transform: uppercase;
+            font-size: 0.75em;
+            letter-spacing: 1px;
+        }
+
+        .summary-column .statistics .age, .summary-column .statistics .weight, .summary-column .statistics .bmi, .summary-column .statistics .summary-column .statistics .fat {
+            display: block;
+            width: 50%;
+            height: 100px;
+            box-sizing: border-box;
+            float: left;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .summary-column .statistics .title {
+            color: white;
+            letter-spacing: 2px;
+            font-size: 1.5em;
+            position: relative;
+            margin-top: -13px;
+            display: block;
+            line-height: 100px;
+            vertical-align: middle;
+        }
+
+            .summary-column .statistics .title:after {
+                color: #90a0aa;
+                font-size: 0.7em;
+                letter-spacing: 0px;
+                position: absolute;
+                bottom: -26px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        .summary-column .statistics .weight {
+            border-right: none;
+        }
+
+        .summary-column .statistics .title-weight:after {
+            content: 'Weight';
+        }
+
+        .summary-column .statistics .title-age:after {
+            content: 'Age';
+        }
+
+        .summary-column .statistics .title-bmi:after {
+            content: 'BMI';
+        }
+
+        .summary-column .statistics .title-fat:after {
+            content: 'Fat';
+        }
+
+        .summary-column .statistics .height {
+            height: 150px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+            .summary-column .statistics .height .icon {
+                display: block;
+                width: 50%;
+                height: 100%;
+                float: left;
+                background: url("https://svgshare.com/i/4xQ.svg");
+                background-size: 120px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .summary-column .statistics .height .data {
+                display: block;
+                width: 50%;
+                float: left;
+            }
+
+                .summary-column .statistics .height .data span {
+                    display: block;
+                    position: relative;
+                    line-height: 130px;
+                    vertical-align: middle;
+                    font-size: 1.75em;
+                    color: white;
+                }
+
+                    .summary-column .statistics .height .data span:after {
+                        content: 'Height';
+                        color: #90a0aa;
+                        font-size: 0.7em;
+                        line-height: 20px;
+                        letter-spacing: 0px;
+                        position: absolute;
+                        left: 0;
+                        bottom: 25px;
+                    }
+
+        .summary-column .statistics .bmi, .summary-column .statistics .fat {
+            border-bottom: none;
+        }
+
+        .summary-column .statistics .fat {
+            border-right: none;
+        }
+
+        .summary-column .statistics .percentage {
+            font-size: 0.7em;
+            line-height: 0.7em;
+        }
+
+    .summary-column .allergies {
+        padding-top: 20px;
+    }
+
+    .summary-column .row {
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        text-transform: capitalize;
+        border-top: 1px solid #537482;
+        color: #f1f3f4;
+        font-size: 0.8em;
+    }
+
+        .summary-column .row:last-child {
+            border-bottom: 1px solid #537482;
+            margin-bottom: 50px;
+        }
+
+        .summary-column .row .severity {
+            position: absolute;
+            top: 50%;
+            left: 75%;
+            transform: translate(-50%, -75%);
+            width: 100px;
+            height: 5px;
+            background: #567681;
+        }
+
+        .summary-column .row .fill {
+            background: #c3f8ab;
+        }
+
+.content-column {
+    background: white;
+    width: 62%;
+    min-width: 900px;
+    z-index: 0;
+}
+
+@media only screen and (max-width: 1250px) {
+    .content-column {
+        width: 77%;
+    }
+}
+
+.content-column .header-container {
+    width: 100%;
+    height: 331px;
+    overflow: hidden;
+}
+
+.content-column .nav {
+    width: 50%;
+    float: left;
+    font-size: 0.9em;
+    font-weight: 500;
+    line-height: 1;
+}
+
+    .content-column .nav .content {
+        margin: 50px 0 0 50px;
+        white-space: nowrap;
+    }
+
+    .content-column .nav p {
+        text-transform: uppercase;
+        color: #899191;
+        letter-spacing: 1px;
+    }
+
+    .content-column .nav .name {
+        color: #636d6d;
+    }
+
+    .content-column .nav .shape {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 200;
+        font-size: 6em;
+        color: #8b9494;
+    }
+
+    .content-column .nav .score {
+        color: #34d0c4;
+    }
+
+.content-column .select-boxes {
+    float: left;
+    width: 50%;
+}
+
+    .content-column .select-boxes .content {
+        margin: 40px;
+        float: right;
+    }
+
+.content-column .split-container {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+}
+
+    .content-column .split-container .split {
+        position: relative;
+        width: calc(100% / 3);
+        min-width: 300px;
+        text-align: center;
+        font-size: 1.7em;
+        font-weight: 300;
+        border-right: 1px solid #dddfe1;
+        border-bottom: 1px solid #dddfe1;
+    }
+
+        .content-column .split-container .split .split-graph {
+            max-width: 100%;
+            height: 125px;
+            overflow: hidden;
+        }
+
+        .content-column .split-container .split h3 {
+            font-size: 1.1em;
+            font-weight: 300;
+            margin: 50px 0 0 0;
+            color: #566161;
+        }
+
+        .content-column .split-container .split:last-child {
+            border-right: none;
+        }
+
+    .content-column .split-container .temperature, .content-column .split-container .calories, .content-column .split-container .content-column .split-container .heart-rate {
+        display: block;
+        color: #58676c;
+        font-size: 2em;
+        line-height: 2em;
+        width: 225px;
+        margin: auto;
+        position: relative;
+        font-weight: 300;
+        margin: 10px auto;
+    }
+
+        .content-column .split-container .temperature:before, .content-column .split-container .calories:before, .content-column .split-container .content-column .split-container .heart-rate:before {
+            content: '';
+            position: absolute;
+            height: 35px;
+            width: 35px;
+            background: url('https://svgshare.com/i/50V.svg');
+            background-size: 35px 35px;
+            background-position: center;
+            background-repeat: no-repeat;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .content-column .split-container .temperature:after, .content-column .split-container .calories:after, .content-column .split-container .content-column .split-container .heart-rate:after {
+            content: '°';
+            font-weight: 300;
+            color: #889599;
+            position: absolute;
+            right: 35px;
+        }
+
+        .content-column .split-container .calories:before, .content-column .split-container .heart-rate:before {
+            background: url('https://svgshare.com/i/52_.svg');
+            background-size: 35px 35px;
+        }
+
+        .content-column .split-container .calories:after, .content-column .split-container .heart-rate:after {
+            content: 'cal';
+            font-size: 0.5em;
+            right: 30px;
+            bottom: -9px;
+        }
+
+    .content-column .split-container .heart-rate:before {
+        background: url('https://svgshare.com/i/51m.svg');
+        background-size: 35px 35px;
+        left: 30px;
+    }
+
+    .content-column .split-container .heart-rate:after {
+        content: 'bpm';
+        right: 20px;
+    }
+
+.content-column .sleep .totals {
+    width: 30%;
+    float: left;
+}
+
+    .content-column .sleep .totals .collective {
+        margin-top: 75px;
+        margin-left: 15%;
+    }
+
+        .content-column .sleep .totals .collective .hours, .content-column .sleep .totals .collective .minutes {
+            position: relative;
+            color: #58676c;
+            font-size: 3em;
+            height: 20px;
+            font-weight: 300;
+            margin-right: 0.5em;
+        }
+
+            .content-column .sleep .totals .collective .hours:after, .content-column .sleep .totals .collective .minutes:after {
+                position: absolute;
+                font-size: 0.4em;
+                color: #899599;
+                bottom: 10px;
+                right: -15px;
+                height: 20px;
+                line-height: 20px;
+                content: 'h';
+            }
+
+            .content-column .sleep .totals .collective .minutes:after {
+                right: -22px;
+                content: 'm';
+            }
+
+        .content-column .sleep .totals .collective p {
+            color: #a7afb2;
+            font-weight: 300;
+            margin: 0;
+            margin-top: -5px;
+        }
+
+    .content-column .sleep .totals .split {
+        display: block;
+        float: left;
+        width: 20%;
+        margin: 30px 15%;
+        font-weight: bold;
+        color: #58676c;
+    }
+
+        .content-column .sleep .totals .split p {
+            color: #a7afb2;
+            font-weight: 300;
+            margin: 0;
+        }
+
+    .content-column .sleep .totals .first {
+        margin-right: 0;
+    }
+
+.content-column .sleep .sleep-graph {
+    width: 70%;
+    float: left;
+}
+
+    .content-column .sleep .sleep-graph .sleep-graph-container {
+        width: 80%;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+        .content-column .sleep .sleep-graph .sleep-graph-container .chart-container {
+            height: 200px;
+            margin-top: -20px;
+            padding-bottom: 20px;
+        }
+
+    .content-column .sleep .sleep-graph h2 {
+        display: inline-block;
+        margin: 0;
+        color: #828989;
+        font-weight: 300;
+        text-indent: 15px;
+        line-height: 30px;
+    }
+
+    .content-column .sleep .sleep-graph .sleep-select-wrapper {
+        display: block;
+        float: right;
+    }
+
+.content-column .bottom {
+    border-bottom: none !important;
+    border-top: 1px solid #dddfe1;
+}
+
+    .content-column .bottom h2 {
+        margin: 35px 0;
+        font-size: 0.9em;
+        font-weight: 300;
+    }
+
+.content-column .appointments {
+    margin: 0 20%;
+}
+
+    .content-column .appointments .calendar-container {
+        height: 140px;
+        padding-top: 24px;
+        min-width: 185px;
+    }
+
+    .content-column .appointments .calendar {
+        width: 92px;
+        float: left;
+        background: #f1f4f4;
+        padding: 14px 0;
+    }
+
+        .content-column .appointments .calendar .date {
+            font-size: 0.7em;
+        }
+
+        .content-column .appointments .calendar .month {
+            display: block;
+            text-transform: capitalize;
+        }
+
+    .content-column .appointments .content {
+        box-sizing: margin-box;
+        width: 50%;
+        float: left;
+    }
+
+        .content-column .appointments .content .appointment-table {
+            margin-left: 15px;
+            height: 92px;
+            text-align: left;
+            font-size: 0.55em;
+            border-collapse: collapse;
+        }
+
+            .content-column .appointments .content .appointment-table td {
+                padding: 0;
+            }
+
+.content-column .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+    .content-column .map-overlay .steps {
+        display: block;
+        font-size: 2em;
+        color: #58676c;
+    }
+
+    .content-column .map-overlay .distance {
+        display: block;
+        font-size: 0.75em;
+        color: #a6acaf;
+        font-weight: 400;
+    }
+
+.search-column {
+    background: #e3e8e9;
+    width: 15%;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 1250px) {
+    .search-column {
+        display: none;
+    }
+}
+
+.search-column h3 {
+    text-transform: uppercase;
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #92999a;
+    margin: 20px 0;
+    letter-spacing: 1px;
+}
+
+.search-column .search-container {
+    position: relative;
+    width: 100%;
+    height: 65px;
+}
+
+    .search-column .search-container img {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 25px;
+        height: 25px;
+    }
+
+    .search-column .search-container input {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #d9dfe1;
+        color: #9da5a6;
+        font-size: 1.25em;
+        font-weight: 300;
+        text-indent: 20%;
+    }
+
+.search-column .activity-list {
+    width: 80%;
+    margin: auto;
+}
+
+.search-column .activity, .search-column .doctor {
+    font-size: 0;
+    height: 75px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+    .search-column .activity .image-container, .search-column .doctor .image-container {
+        display: inline-block;
+        width: 20%;
+        height: 55px;
+    }
+
+        .search-column .activity .image-container img, .search-column .doctor .image-container img {
+            display: block;
+            border-radius: 50%;
+        }
+
+    .search-column .activity .text, .search-column .doctor .text {
+        display: inline-block;
+        width: calc(80% - 10px);
+        font-size: 0.75rem;
+        margin-left: 10px;
+        letter-spacing: 1px;
+        color: #646f73;
+        vertical-align: top;
+    }
+
+    .search-column .activity .time-ago, .search-column .doctor .time-ago {
+        display: block;
+        margin-top: 3px;
+        color: #a9b1b2;
+    }
+
+    .search-column .activity .name, .search-column .doctor .name {
+        font-weight: 500;
+        color: #485155;
+    }
+
+    .search-column .activity .name-large, .search-column .doctor .name-large {
+        font-size: 1.3em;
+    }
+
+    .search-column .activity .title, .search-column .doctor .title {
+        display: block;
+        color: #a9b1b2;
+    }
+
+.search-column .doctor {
+    height: 40px;
+    margin-bottom: 30px;
+}
+
+.search-column .find-doctor {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background: #f9fafb;
+    border: 0;
+    font-size: 0.9em;
+    color: #5b6767;
+    cursor: pointer;
+}
+
+.doctor-grid {
+    margin: auto;
+}
+
+    .doctor-grid img {
+        display: block;
+    }
+
+.graph {
+    width: 110%;
+    margin-top: 70px;
+    margin-left: -7%;
+    height: 125px;
+    z-index: 0;
+}
+
+#temperatureGraph {
+    margin: auto;
+}
+
+#calorieGraph {
+    margin: auto;
+}
+
+#heartRateGraph {
+    margin: auto;
+}
+
+#time {
+    color: #979ea0;
+}
+
+#title {
+    color: #30cec2;
+    font-weight: 500;
+}
+
+#name {
+    color: #5e696d;
+}
+
+#expand {
+    color: #fdfefe;
+    font-weight: 400;
+}
+
+    #expand .background {
+        width: 65px;
+        height: 65px;
+        line-height: 65px;
+        background: #2bcdc1;
+        cursor: pointer;
+    }
+
+#map {
+    width: 100%;
+    height: 314px;
+    opacity: 0.3;
+}
+
+.select-wrapper, .content-column .sleep .sleep-graph .sleep-select-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+    .select-wrapper:after, .content-column .sleep .sleep-graph .sleep-select-wrapper:after {
+        content: '';
+        width: 9px;
+        height: 9px;
+        background: url('https://svgshare.com/i/4xe.svg');
+        background-size: 9px;
+        background-position: center;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+select {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-left: 20px;
+    border: 1px solid #d6dadc;
+    color: #5d7171;
+    width: 120px;
+    height: 30px;
+    border-radius: 25px;
+    text-indent: 7px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+}
+
+#sleepChart {
+    margin: 50px 0;
+    height: 200px;
+}
