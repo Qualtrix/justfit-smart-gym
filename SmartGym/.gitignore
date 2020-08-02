@@ -24,6 +24,7 @@ _UpgradeReport_Files/
 ###############
 bin/
 obj/
+images/
 TestResults/
 ###################
 # Web publish log #

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="be38d1e63cf743f1b056eab104072f2f" Name="Diagram1">
+        <EntityTypeShape EntityType="SmartGymModel.Account" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.Activity" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.Designation" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.Employee" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.HealthRanx" Width="1.5" PointX="11.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.Health" Width="1.5" PointX="13.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.Invoice" Width="1.5" PointX="10.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.Log" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.Member" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.MemberShip" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.Session" Width="1.5" PointX="13.5" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartGymModel.TrainerType" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="SmartGymModel.FK_Account_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK__Designati__activ__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK_Session_Activity" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK__Designation__id__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK__Employee__role__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK__Members__trainer__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK__Health__healthSt__17036CC0" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK_Health_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK_Invoice_Members" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK_Members_MemberShip" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartGymModel.FK_Session_Members" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

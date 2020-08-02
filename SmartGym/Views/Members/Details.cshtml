@@ -150,7 +150,37 @@
                             <!-- Card Content - Collapse -->
                             <div class="collapse show" id="collapseCardExample">
                                 <div class="card-body">
-                                    
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Date
+                                                </th>
+                                                <th>
+                                                    Health Status
+                                                </th>
+                                                <th>
+                                                    BMI
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach(var health in Model.Healths)
+                                                {
+                                            <tr>
+                                                <td>
+                                                    @health.updated
+                                                </td>
+                                                <td>
+                                                    @health.HealthRanx.name
+                                                </td>
+                                                <td>
+                                                    @health.BMI
+                                                </td>
+                                            </tr>
+                                                }
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

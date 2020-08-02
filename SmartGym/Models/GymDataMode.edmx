@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SmartGymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Account">
+      <Schema Namespace="SmartGymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accounts">
           <Key>
             <PropertyRef Name="accno" />
           </Key>
@@ -14,7 +14,7 @@
           <Property Name="bank" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="cardType" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
-        <EntityType Name="Activity">
+        <EntityType Name="Activities">
           <Key>
             <PropertyRef Name="code" />
           </Key>
@@ -23,16 +23,14 @@
           <Property Name="name" Type="varchar" MaxLength="50" />
           <Property Name="include" Type="varchar" MaxLength="800" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Designation">
+        <EntityType Name="Designations">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="activityCode" Type="varchar" MaxLength="4" />
         </EntityType>
-        <EntityType Name="Employee">
+        <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -44,11 +42,20 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <Property Name="address" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="postalCode" Type="varchar" MaxLength="4" Nullable="false" />
           <Property Name="salary" Type="float" Nullable="false" />
-          <Property Name="hireDate" Type="date" Nullable="false" />
+          <Property Name="hireDate" Type="datetime" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="role" Type="int" />
         </EntityType>
-        <EntityType Name="Health">
+        <EntityType Name="HealthRanges">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="minimum" Type="float" Nullable="false" />
+          <Property Name="maximum" Type="float" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Healths">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -61,21 +68,12 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="healthStatus" Type="int" />
         </EntityType>
-        <EntityType Name="HealthRange">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="name" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="minimum" Type="float" Nullable="false" />
-          <Property Name="maximum" Type="float" Nullable="false" />
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Invoice">
+        <EntityType Name="Invoices">
           <Key>
             <PropertyRef Name="invoiceNo" />
           </Key>
           <Property Name="invoiceNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="invoiceDate" Type="date" Nullable="false" />
+          <Property Name="invoiceDate" Type="datetime" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="memID" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="total" Type="float" Nullable="false" />
@@ -102,11 +100,11 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <Property Name="phone" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="address" Type="varchar" MaxLength="100" />
           <Property Name="memberShip" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="joinDate" Type="date" Nullable="false" />
+          <Property Name="joinDate" Type="datetime" Nullable="false" />
           <Property Name="trainer" Type="int" />
-          <Property Name="terminateDate" Type="date" />
+          <Property Name="terminateDate" Type="datetime" />
         </EntityType>
-        <EntityType Name="MemberShip">
+        <EntityType Name="MemberShips">
           <Key>
             <PropertyRef Name="code" />
           </Key>
@@ -115,7 +113,7 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <Property Name="fee" Type="float" Nullable="false" />
           <Property Name="level" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Session">
+        <EntityType Name="Sessions">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -136,7 +134,7 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="TrainerType">
+        <EntityType Name="TrainerTypes">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -145,58 +143,58 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <Property Name="description" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <Association Name="FK__Designati__activ__08B54D69">
-          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
-          <End Role="Designation" Type="Self.Designation" Multiplicity="*" />
+          <End Role="Activities" Type="Self.Activities" Multiplicity="0..1" />
+          <End Role="Designations" Type="Self.Designations" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Activity">
+            <Principal Role="Activities">
               <PropertyRef Name="code" />
             </Principal>
-            <Dependent Role="Designation">
+            <Dependent Role="Designations">
               <PropertyRef Name="activityCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Designation__id__07C12930">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
-          <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Designations" Type="Self.Designations" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
+            <Principal Role="Employees">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Designation">
+            <Dependent Role="Designations">
               <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Employee__role__29221CFB">
-          <End Role="TrainerType" Type="Self.TrainerType" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Role="TrainerTypes" Type="Self.TrainerTypes" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TrainerType">
+            <Principal Role="TrainerTypes">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Employee">
+            <Dependent Role="Employees">
               <PropertyRef Name="role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Health__healthSt__17036CC0">
-          <End Role="HealthRange" Type="Self.HealthRange" Multiplicity="0..1" />
-          <End Role="Health" Type="Self.Health" Multiplicity="*" />
+          <End Role="HealthRanges" Type="Self.HealthRanges" Multiplicity="0..1" />
+          <End Role="Healths" Type="Self.Healths" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="HealthRange">
+            <Principal Role="HealthRanges">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Health">
+            <Dependent Role="Healths">
               <PropertyRef Name="healthStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Members__trainer__09A971A2">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1" />
           <End Role="Members" Type="Self.Members" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
+            <Principal Role="Employees">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Members">
@@ -208,12 +206,12 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <End Role="Members" Type="Self.Members" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+          <End Role="Accounts" Type="Self.Accounts" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Members">
               <PropertyRef Name="memId" />
             </Principal>
-            <Dependent Role="Account">
+            <Dependent Role="Accounts">
               <PropertyRef Name="memId" />
             </Dependent>
           </ReferentialConstraint>
@@ -222,12 +220,12 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <End Role="Members" Type="Self.Members" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Health" Type="Self.Health" Multiplicity="*" />
+          <End Role="Healths" Type="Self.Healths" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Members">
               <PropertyRef Name="memId" />
             </Principal>
-            <Dependent Role="Health">
+            <Dependent Role="Healths">
               <PropertyRef Name="memId" />
             </Dependent>
           </ReferentialConstraint>
@@ -236,21 +234,21 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <End Role="Members" Type="Self.Members" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <End Role="Invoices" Type="Self.Invoices" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Members">
               <PropertyRef Name="memId" />
             </Principal>
-            <Dependent Role="Invoice">
+            <Dependent Role="Invoices">
               <PropertyRef Name="memID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Members_MemberShip">
-          <End Role="MemberShip" Type="Self.MemberShip" Multiplicity="1" />
+          <End Role="MemberShips" Type="Self.MemberShips" Multiplicity="1" />
           <End Role="Members" Type="Self.Members" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MemberShip">
+            <Principal Role="MemberShips">
               <PropertyRef Name="code" />
             </Principal>
             <Dependent Role="Members">
@@ -259,15 +257,15 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Session_Activity">
-          <End Role="Activity" Type="Self.Activity" Multiplicity="1">
+          <End Role="Activities" Type="Self.Activities" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Activity">
+            <Principal Role="Activities">
               <PropertyRef Name="code" />
             </Principal>
-            <Dependent Role="Session">
+            <Dependent Role="Sessions">
               <PropertyRef Name="activityCode" />
             </Dependent>
           </ReferentialConstraint>
@@ -276,182 +274,138 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <End Role="Members" Type="Self.Members" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <End Role="Sessions" Type="Self.Sessions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Members">
               <PropertyRef Name="memId" />
             </Principal>
-            <Dependent Role="Session">
+            <Dependent Role="Sessions">
               <PropertyRef Name="memId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SmartGymModelStoreContainer">
-          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Health" EntityType="Self.Health" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="HealthRange" EntityType="Self.HealthRange" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accounts" EntityType="Self.Accounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Activities" EntityType="Self.Activities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Designations" EntityType="Self.Designations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HealthRanges" EntityType="Self.HealthRanges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Healths" EntityType="Self.Healths" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MemberShip" EntityType="Self.MemberShip" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberShips" EntityType="Self.MemberShips" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sessions" EntityType="Self.Sessions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TrainerType" EntityType="Self.TrainerType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Designation" EntityType="Self.Designation" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Designation].[id] AS [id], 
-    [Designation].[activityCode] AS [activityCode]
-    FROM [dbo].[Designation] AS [Designation]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="TrainerTypes" EntityType="Self.TrainerTypes" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Designati__activ__08B54D69" Association="Self.FK__Designati__activ__08B54D69">
-            <End Role="Activity" EntitySet="Activity" />
-            <End Role="Designation" EntitySet="Designation" />
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Designations" EntitySet="Designations" />
           </AssociationSet>
           <AssociationSet Name="FK__Designation__id__07C12930" Association="Self.FK__Designation__id__07C12930">
-            <End Role="Employee" EntitySet="Employee" />
-            <End Role="Designation" EntitySet="Designation" />
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Designations" EntitySet="Designations" />
           </AssociationSet>
           <AssociationSet Name="FK__Employee__role__29221CFB" Association="Self.FK__Employee__role__29221CFB">
-            <End Role="TrainerType" EntitySet="TrainerType" />
-            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TrainerTypes" EntitySet="TrainerTypes" />
+            <End Role="Employees" EntitySet="Employees" />
           </AssociationSet>
           <AssociationSet Name="FK__Health__healthSt__17036CC0" Association="Self.FK__Health__healthSt__17036CC0">
-            <End Role="HealthRange" EntitySet="HealthRange" />
-            <End Role="Health" EntitySet="Health" />
+            <End Role="HealthRanges" EntitySet="HealthRanges" />
+            <End Role="Healths" EntitySet="Healths" />
           </AssociationSet>
           <AssociationSet Name="FK__Members__trainer__09A971A2" Association="Self.FK__Members__trainer__09A971A2">
-            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employees" EntitySet="Employees" />
             <End Role="Members" EntitySet="Members" />
           </AssociationSet>
           <AssociationSet Name="FK_Account_Members" Association="Self.FK_Account_Members">
             <End Role="Members" EntitySet="Members" />
-            <End Role="Account" EntitySet="Account" />
+            <End Role="Accounts" EntitySet="Accounts" />
           </AssociationSet>
           <AssociationSet Name="FK_Health_Members" Association="Self.FK_Health_Members">
             <End Role="Members" EntitySet="Members" />
-            <End Role="Health" EntitySet="Health" />
+            <End Role="Healths" EntitySet="Healths" />
           </AssociationSet>
           <AssociationSet Name="FK_Invoice_Members" Association="Self.FK_Invoice_Members">
             <End Role="Members" EntitySet="Members" />
-            <End Role="Invoice" EntitySet="Invoice" />
+            <End Role="Invoices" EntitySet="Invoices" />
           </AssociationSet>
           <AssociationSet Name="FK_Members_MemberShip" Association="Self.FK_Members_MemberShip">
-            <End Role="MemberShip" EntitySet="MemberShip" />
+            <End Role="MemberShips" EntitySet="MemberShips" />
             <End Role="Members" EntitySet="Members" />
           </AssociationSet>
           <AssociationSet Name="FK_Session_Activity" Association="Self.FK_Session_Activity">
-            <End Role="Activity" EntitySet="Activity" />
-            <End Role="Session" EntitySet="Session" />
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Sessions" EntitySet="Sessions" />
           </AssociationSet>
           <AssociationSet Name="FK_Session_Members" Association="Self.FK_Session_Members">
             <End Role="Members" EntitySet="Members" />
-            <End Role="Session" EntitySet="Session" />
+            <End Role="Sessions" EntitySet="Sessions" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SmartGymModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="SmartGymEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Accounts" EntityType="SmartGymModel.Account" />
-          <EntitySet Name="Activities" EntityType="SmartGymModel.Activity" />
-          <EntitySet Name="Employees" EntityType="SmartGymModel.Employee" />
-          <EntitySet Name="Healths" EntityType="SmartGymModel.Health" />
-          <EntitySet Name="HealthRanges" EntityType="SmartGymModel.HealthRange" />
-          <EntitySet Name="Invoices" EntityType="SmartGymModel.Invoice" />
-          <EntitySet Name="Logs" EntityType="SmartGymModel.Log" />
-          <EntitySet Name="Members" EntityType="SmartGymModel.Member" />
-          <EntitySet Name="MemberShips" EntityType="SmartGymModel.MemberShip" />
-          <EntitySet Name="Sessions" EntityType="SmartGymModel.Session" />
-          <EntitySet Name="sysdiagrams" EntityType="SmartGymModel.sysdiagram" />
-          <EntitySet Name="TrainerTypes" EntityType="SmartGymModel.TrainerType" />
-          <EntitySet Name="Designations" EntityType="SmartGymModel.Designation" />
-          <AssociationSet Name="FK_Account_Members" Association="SmartGymModel.FK_Account_Members">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="Account" EntitySet="Accounts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Designati__activ__08B54D69" Association="SmartGymModel.FK__Designati__activ__08B54D69">
-            <End Role="Activity" EntitySet="Activities" />
-            <End Role="Designation" EntitySet="Designations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Session_Activity" Association="SmartGymModel.FK_Session_Activity">
-            <End Role="Activity" EntitySet="Activities" />
-            <End Role="Session" EntitySet="Sessions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Designation__id__07C12930" Association="SmartGymModel.FK__Designation__id__07C12930">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Designation" EntitySet="Designations" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Employee__role__29221CFB" Association="SmartGymModel.FK__Employee__role__29221CFB">
-            <End Role="TrainerType" EntitySet="TrainerTypes" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Members__trainer__09A971A2" Association="SmartGymModel.FK__Members__trainer__09A971A2">
-            <End Role="Employee" EntitySet="Employees" />
-            <End Role="Member" EntitySet="Members" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Health__healthSt__17036CC0" Association="SmartGymModel.FK__Health__healthSt__17036CC0">
-            <End Role="HealthRange" EntitySet="HealthRanges" />
-            <End Role="Health" EntitySet="Healths" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Health_Members" Association="SmartGymModel.FK_Health_Members">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="Health" EntitySet="Healths" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Invoice_Members" Association="SmartGymModel.FK_Invoice_Members">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="Invoice" EntitySet="Invoices" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Members_MemberShip" Association="SmartGymModel.FK_Members_MemberShip">
-            <End Role="MemberShip" EntitySet="MemberShips" />
-            <End Role="Member" EntitySet="Members" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Session_Members" Association="SmartGymModel.FK_Session_Members">
-            <End Role="Member" EntitySet="Members" />
-            <End Role="Session" EntitySet="Sessions" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Account">
           <Key>
             <PropertyRef Name="accno" />
           </Key>
           <Property Name="accno" Type="Int32" Nullable="false" />
-          <Property Name="memId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="bank" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="cardType" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Member" Relationship="SmartGymModel.FK_Account_Members" FromRole="Account" ToRole="Member" />
+          <Property Name="memId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="bank" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cardType" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Account_Members" FromRole="Accounts" ToRole="Members" />
         </EntityType>
         <EntityType Name="Activity">
           <Key>
             <PropertyRef Name="code" />
           </Key>
-          <Property Name="code" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="include" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Designations" Relationship="SmartGymModel.FK__Designati__activ__08B54D69" FromRole="Activity" ToRole="Designation" />
-          <NavigationProperty Name="Sessions" Relationship="SmartGymModel.FK_Session_Activity" FromRole="Activity" ToRole="Session" />
+          <NavigationProperty Name="Designations" Relationship="Self.FK__Designati__activ__08B54D69" FromRole="Activities" ToRole="Designations" />
+          <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Activity" FromRole="Activities" ToRole="Sessions" />
+        </EntityType>
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="activityCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK__Designati__activ__08B54D69" FromRole="Designations" ToRole="Activities" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Designation__id__07C12930" FromRole="Designations" ToRole="Employees" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="phone" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="postalCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postalCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="salary" Type="Double" Nullable="false" />
-          <Property Name="hireDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hireDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="role" Type="Int32" />
-          <NavigationProperty Name="Designation" Relationship="SmartGymModel.FK__Designation__id__07C12930" FromRole="Employee" ToRole="Designation" />
-          <NavigationProperty Name="TrainerType" Relationship="SmartGymModel.FK__Employee__role__29221CFB" FromRole="Employee" ToRole="TrainerType" />
-          <NavigationProperty Name="Members" Relationship="SmartGymModel.FK__Members__trainer__09A971A2" FromRole="Employee" ToRole="Member" />
+          <NavigationProperty Name="Designation" Relationship="Self.FK__Designation__id__07C12930" FromRole="Employees" ToRole="Designations" />
+          <NavigationProperty Name="TrainerType" Relationship="Self.FK__Employee__role__29221CFB" FromRole="Employees" ToRole="TrainerTypes" />
+          <NavigationProperty Name="Members" Relationship="Self.FK__Members__trainer__09A971A2" FromRole="Employees" ToRole="Members" />
+        </EntityType>
+        <EntityType Name="HealthRanx">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="minimum" Type="Double" Nullable="false" />
+          <Property Name="maximum" Type="Double" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Healths" Relationship="Self.FK__Health__healthSt__17036CC0" FromRole="HealthRanges" ToRole="Healths" />
         </EntityType>
         <EntityType Name="Health">
           <Key>
@@ -461,34 +415,24 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <Property Name="height" Type="Double" Nullable="false" />
           <Property Name="weight" Type="Double" Nullable="false" />
           <Property Name="BMI" Type="Double" Nullable="false" />
-          <Property Name="imageUrl" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="imageUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="updated" Type="DateTime" Precision="3" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="healthStatus" Type="Int32" />
-          <NavigationProperty Name="HealthRange" Relationship="SmartGymModel.FK__Health__healthSt__17036CC0" FromRole="Health" ToRole="HealthRange" />
-          <NavigationProperty Name="Member" Relationship="SmartGymModel.FK_Health_Members" FromRole="Health" ToRole="Member" />
-        </EntityType>
-        <EntityType Name="HealthRange">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="minimum" Type="Double" Nullable="false" />
-          <Property Name="maximum" Type="Double" Nullable="false" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Healths" Relationship="SmartGymModel.FK__Health__healthSt__17036CC0" FromRole="HealthRange" ToRole="Health" />
+          <NavigationProperty Name="HealthRanx" Relationship="Self.FK__Health__healthSt__17036CC0" FromRole="Healths" ToRole="HealthRanges" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Health_Members" FromRole="Healths" ToRole="Members" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
             <PropertyRef Name="invoiceNo" />
           </Key>
           <Property Name="invoiceNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="invoiceDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="memID" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="memID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="total" Type="Double" Nullable="false" />
           <Property Name="status" Type="Boolean" />
-          <NavigationProperty Name="Member" Relationship="SmartGymModel.FK_Invoice_Members" FromRole="Invoice" ToRole="Member" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Invoice_Members" FromRole="Invoices" ToRole="Members" />
         </EntityType>
         <EntityType Name="Log">
           <Key>
@@ -503,52 +447,52 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
           <Key>
             <PropertyRef Name="memId" />
           </Key>
-          <Property Name="memId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="sa_id" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="phone" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="memId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="sa_id" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="memberShip" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="joinDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="memberShip" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="joinDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="trainer" Type="Int32" />
-          <Property Name="terminateDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Accounts" Relationship="SmartGymModel.FK_Account_Members" FromRole="Member" ToRole="Account" />
-          <NavigationProperty Name="Employee" Relationship="SmartGymModel.FK__Members__trainer__09A971A2" FromRole="Member" ToRole="Employee" />
-          <NavigationProperty Name="Healths" Relationship="SmartGymModel.FK_Health_Members" FromRole="Member" ToRole="Health" />
-          <NavigationProperty Name="Invoices" Relationship="SmartGymModel.FK_Invoice_Members" FromRole="Member" ToRole="Invoice" />
-          <NavigationProperty Name="MemberShip1" Relationship="SmartGymModel.FK_Members_MemberShip" FromRole="Member" ToRole="MemberShip" />
-          <NavigationProperty Name="Sessions" Relationship="SmartGymModel.FK_Session_Members" FromRole="Member" ToRole="Session" />
+          <Property Name="terminateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Members" FromRole="Members" ToRole="Accounts" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Members__trainer__09A971A2" FromRole="Members" ToRole="Employees" />
+          <NavigationProperty Name="Healths" Relationship="Self.FK_Health_Members" FromRole="Members" ToRole="Healths" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoice_Members" FromRole="Members" ToRole="Invoices" />
+          <NavigationProperty Name="MemberShip1" Relationship="Self.FK_Members_MemberShip" FromRole="Members" ToRole="MemberShips" />
+          <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Members" FromRole="Members" ToRole="Sessions" />
         </EntityType>
         <EntityType Name="MemberShip">
           <Key>
             <PropertyRef Name="code" />
           </Key>
-          <Property Name="code" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fee" Type="Double" Nullable="false" />
           <Property Name="level" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Members" Relationship="SmartGymModel.FK_Members_MemberShip" FromRole="MemberShip" ToRole="Member" />
+          <NavigationProperty Name="Members" Relationship="Self.FK_Members_MemberShip" FromRole="MemberShips" ToRole="Members" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="memId" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="activityCode" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="memId" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="activityCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="sessionDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="satisfaction" Type="Int32" />
           <Property Name="usage" Type="Int32" />
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Activity" Relationship="SmartGymModel.FK_Session_Activity" FromRole="Session" ToRole="Activity" />
-          <NavigationProperty Name="Member" Relationship="SmartGymModel.FK_Session_Members" FromRole="Session" ToRole="Member" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_Session_Activity" FromRole="Sessions" ToRole="Activities" />
+          <NavigationProperty Name="Member" Relationship="Self.FK_Session_Members" FromRole="Sessions" ToRole="Members" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -559,162 +503,212 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employees" Relationship="SmartGymModel.FK__Employee__role__29221CFB" FromRole="TrainerType" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="Designation">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="activityCode" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Activity" Relationship="SmartGymModel.FK__Designati__activ__08B54D69" FromRole="Designation" ToRole="Activity" />
-          <NavigationProperty Name="Employee" Relationship="SmartGymModel.FK__Designation__id__07C12930" FromRole="Designation" ToRole="Employee" />
+          <Property Name="name" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__role__29221CFB" FromRole="TrainerTypes" ToRole="Employees" />
         </EntityType>
         <Association Name="FK_Account_Members">
-          <End Type="SmartGymModel.Member" Role="Member" Multiplicity="1">
+          <End Role="Members" Type="Self.Member" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="SmartGymModel.Account" Role="Account" Multiplicity="*" />
+          <End Role="Accounts" Type="Self.Account" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Member">
+            <Principal Role="Members">
               <PropertyRef Name="memId" />
             </Principal>
-            <Dependent Role="Account">
+            <Dependent Role="Accounts">
               <PropertyRef Name="memId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Designati__activ__08B54D69">
-          <End Type="SmartGymModel.Activity" Role="Activity" Multiplicity="0..1" />
-          <End Type="SmartGymModel.Designation" Role="Designation" Multiplicity="*" />
+          <End Role="Activities" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="Designations" Type="Self.Designation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Activity">
+            <Principal Role="Activities">
               <PropertyRef Name="code" />
             </Principal>
-            <Dependent Role="Designation">
+            <Dependent Role="Designations">
               <PropertyRef Name="activityCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Session_Activity">
-          <End Type="SmartGymModel.Activity" Role="Activity" Multiplicity="1">
+          <End Role="Activities" Type="Self.Activity" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="SmartGymModel.Session" Role="Session" Multiplicity="*" />
+          <End Role="Sessions" Type="Self.Session" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Activity">
+            <Principal Role="Activities">
               <PropertyRef Name="code" />
             </Principal>
-            <Dependent Role="Session">
+            <Dependent Role="Sessions">
               <PropertyRef Name="activityCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Designation__id__07C12930">
-          <End Type="SmartGymModel.Employee" Role="Employee" Multiplicity="1" />
-          <End Type="SmartGymModel.Designation" Role="Designation" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Designations" Type="Self.Designation" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
+            <Principal Role="Employees">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Designation">
+            <Dependent Role="Designations">
               <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Employee__role__29221CFB">
-          <End Type="SmartGymModel.TrainerType" Role="TrainerType" Multiplicity="0..1" />
-          <End Type="SmartGymModel.Employee" Role="Employee" Multiplicity="*" />
+          <End Role="TrainerTypes" Type="Self.TrainerType" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TrainerType">
+            <Principal Role="TrainerTypes">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Employee">
+            <Dependent Role="Employees">
               <PropertyRef Name="role" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Members__trainer__09A971A2">
-          <End Type="SmartGymModel.Employee" Role="Employee" Multiplicity="0..1" />
-          <End Type="SmartGymModel.Member" Role="Member" Multiplicity="*" />
+          <End Role="Employees" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="Members" Type="Self.Member" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Employee">
+            <Principal Role="Employees">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Member">
+            <Dependent Role="Members">
               <PropertyRef Name="trainer" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Health__healthSt__17036CC0">
-          <End Type="SmartGymModel.HealthRange" Role="HealthRange" Multiplicity="0..1" />
-          <End Type="SmartGymModel.Health" Role="Health" Multiplicity="*" />
+          <End Role="HealthRanges" Type="Self.HealthRanx" Multiplicity="0..1" />
+          <End Role="Healths" Type="Self.Health" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="HealthRange">
+            <Principal Role="HealthRanges">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Health">
+            <Dependent Role="Healths">
               <PropertyRef Name="healthStatus" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Health_Members">
-          <End Type="SmartGymModel.Member" Role="Member" Multiplicity="0..1">
+          <End Role="Members" Type="Self.Member" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="SmartGymModel.Health" Role="Health" Multiplicity="*" />
+          <End Role="Healths" Type="Self.Health" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Member">
+            <Principal Role="Members">
               <PropertyRef Name="memId" />
             </Principal>
-            <Dependent Role="Health">
+            <Dependent Role="Healths">
               <PropertyRef Name="memId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Invoice_Members">
-          <End Type="SmartGymModel.Member" Role="Member" Multiplicity="1">
+          <End Role="Members" Type="Self.Member" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="SmartGymModel.Invoice" Role="Invoice" Multiplicity="*" />
+          <End Role="Invoices" Type="Self.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Member">
+            <Principal Role="Members">
               <PropertyRef Name="memId" />
             </Principal>
-            <Dependent Role="Invoice">
+            <Dependent Role="Invoices">
               <PropertyRef Name="memID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Members_MemberShip">
-          <End Type="SmartGymModel.MemberShip" Role="MemberShip" Multiplicity="1" />
-          <End Type="SmartGymModel.Member" Role="Member" Multiplicity="*" />
+          <End Role="MemberShips" Type="Self.MemberShip" Multiplicity="1" />
+          <End Role="Members" Type="Self.Member" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="MemberShip">
+            <Principal Role="MemberShips">
               <PropertyRef Name="code" />
             </Principal>
-            <Dependent Role="Member">
+            <Dependent Role="Members">
               <PropertyRef Name="memberShip" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Session_Members">
-          <End Type="SmartGymModel.Member" Role="Member" Multiplicity="1">
+          <End Role="Members" Type="Self.Member" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="SmartGymModel.Session" Role="Session" Multiplicity="*" />
+          <End Role="Sessions" Type="Self.Session" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Member">
+            <Principal Role="Members">
               <PropertyRef Name="memId" />
             </Principal>
-            <Dependent Role="Session">
+            <Dependent Role="Sessions">
               <PropertyRef Name="memId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <EntityContainer Name="SmartGymEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Activities" EntityType="Self.Activity" />
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="HealthRanges" EntityType="Self.HealthRanx" />
+          <EntitySet Name="Healths" EntityType="Self.Health" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="Logs" EntityType="Self.Log" />
+          <EntitySet Name="Members" EntityType="Self.Member" />
+          <EntitySet Name="MemberShips" EntityType="Self.MemberShip" />
+          <EntitySet Name="Sessions" EntityType="Self.Session" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TrainerTypes" EntityType="Self.TrainerType" />
+          <AssociationSet Name="FK_Account_Members" Association="Self.FK_Account_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Accounts" EntitySet="Accounts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Designati__activ__08B54D69" Association="Self.FK__Designati__activ__08B54D69">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Designations" EntitySet="Designations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Session_Activity" Association="Self.FK_Session_Activity">
+            <End Role="Activities" EntitySet="Activities" />
+            <End Role="Sessions" EntitySet="Sessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Designation__id__07C12930" Association="Self.FK__Designation__id__07C12930">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Designations" EntitySet="Designations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__role__29221CFB" Association="Self.FK__Employee__role__29221CFB">
+            <End Role="TrainerTypes" EntitySet="TrainerTypes" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Members__trainer__09A971A2" Association="Self.FK__Members__trainer__09A971A2">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Members" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Health__healthSt__17036CC0" Association="Self.FK__Health__healthSt__17036CC0">
+            <End Role="HealthRanges" EntitySet="HealthRanges" />
+            <End Role="Healths" EntitySet="Healths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Health_Members" Association="Self.FK_Health_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Healths" EntitySet="Healths" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Members" Association="Self.FK_Invoice_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Invoices" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Members_MemberShip" Association="Self.FK_Members_MemberShip">
+            <End Role="MemberShips" EntitySet="MemberShips" />
+            <End Role="Members" EntitySet="Members" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Session_Members" Association="Self.FK_Session_Members">
+            <End Role="Members" EntitySet="Members" />
+            <End Role="Sessions" EntitySet="Sessions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -722,151 +716,151 @@ warning 6002: The table/view 'SmartGym.dbo.Designation' does not have a primary 
         <EntityContainerMapping StorageEntityContainer="SmartGymModelStoreContainer" CdmEntityContainer="SmartGymEntities">
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="SmartGymModel.Account">
-              <MappingFragment StoreEntitySet="Account">
-                <ScalarProperty Name="cardType" ColumnName="cardType" />
-                <ScalarProperty Name="bank" ColumnName="bank" />
-                <ScalarProperty Name="memId" ColumnName="memId" />
+              <MappingFragment StoreEntitySet="Accounts">
                 <ScalarProperty Name="accno" ColumnName="accno" />
+                <ScalarProperty Name="memId" ColumnName="memId" />
+                <ScalarProperty Name="bank" ColumnName="bank" />
+                <ScalarProperty Name="cardType" ColumnName="cardType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Activities">
             <EntityTypeMapping TypeName="SmartGymModel.Activity">
-              <MappingFragment StoreEntitySet="Activity">
-                <ScalarProperty Name="include" ColumnName="include" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="description" ColumnName="description" />
+              <MappingFragment StoreEntitySet="Activities">
                 <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="include" ColumnName="include" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="SmartGymModel.Designation">
+              <MappingFragment StoreEntitySet="Designations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="activityCode" ColumnName="activityCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="SmartGymModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="role" ColumnName="role" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="hireDate" ColumnName="hireDate" />
-                <ScalarProperty Name="salary" ColumnName="salary" />
-                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="hireDate" ColumnName="hireDate" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role" ColumnName="role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HealthRanges">
+            <EntityTypeMapping TypeName="SmartGymModel.HealthRanx">
+              <MappingFragment StoreEntitySet="HealthRanges">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="minimum" ColumnName="minimum" />
+                <ScalarProperty Name="maximum" ColumnName="maximum" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Healths">
             <EntityTypeMapping TypeName="SmartGymModel.Health">
-              <MappingFragment StoreEntitySet="Health">
-                <ScalarProperty Name="healthStatus" ColumnName="healthStatus" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="updated" ColumnName="updated" />
-                <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
-                <ScalarProperty Name="BMI" ColumnName="BMI" />
-                <ScalarProperty Name="weight" ColumnName="weight" />
-                <ScalarProperty Name="height" ColumnName="height" />
+              <MappingFragment StoreEntitySet="Healths">
                 <ScalarProperty Name="memId" ColumnName="memId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="HealthRanges">
-            <EntityTypeMapping TypeName="SmartGymModel.HealthRange">
-              <MappingFragment StoreEntitySet="HealthRange">
+                <ScalarProperty Name="height" ColumnName="height" />
+                <ScalarProperty Name="weight" ColumnName="weight" />
+                <ScalarProperty Name="BMI" ColumnName="BMI" />
+                <ScalarProperty Name="imageUrl" ColumnName="imageUrl" />
+                <ScalarProperty Name="updated" ColumnName="updated" />
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="maximum" ColumnName="maximum" />
-                <ScalarProperty Name="minimum" ColumnName="minimum" />
-                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="healthStatus" ColumnName="healthStatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Invoices">
             <EntityTypeMapping TypeName="SmartGymModel.Invoice">
-              <MappingFragment StoreEntitySet="Invoice">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="total" ColumnName="total" />
-                <ScalarProperty Name="memID" ColumnName="memID" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="invoiceDate" ColumnName="invoiceDate" />
+              <MappingFragment StoreEntitySet="Invoices">
                 <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="invoiceDate" ColumnName="invoiceDate" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="memID" ColumnName="memID" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logs">
             <EntityTypeMapping TypeName="SmartGymModel.Log">
               <MappingFragment StoreEntitySet="Logs">
-                <ScalarProperty Name="path" ColumnName="path" />
-                <ScalarProperty Name="errorDate" ColumnName="errorDate" />
-                <ScalarProperty Name="errorMsg" ColumnName="errorMsg" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="errorMsg" ColumnName="errorMsg" />
+                <ScalarProperty Name="errorDate" ColumnName="errorDate" />
+                <ScalarProperty Name="path" ColumnName="path" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Members">
             <EntityTypeMapping TypeName="SmartGymModel.Member">
               <MappingFragment StoreEntitySet="Members">
-                <ScalarProperty Name="terminateDate" ColumnName="terminateDate" />
-                <ScalarProperty Name="trainer" ColumnName="trainer" />
-                <ScalarProperty Name="joinDate" ColumnName="joinDate" />
-                <ScalarProperty Name="memberShip" ColumnName="memberShip" />
-                <ScalarProperty Name="address" ColumnName="address" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="sa_id" ColumnName="sa_id" />
-                <ScalarProperty Name="surname" ColumnName="surname" />
-                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="memId" ColumnName="memId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="sa_id" ColumnName="sa_id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="memberShip" ColumnName="memberShip" />
+                <ScalarProperty Name="joinDate" ColumnName="joinDate" />
+                <ScalarProperty Name="trainer" ColumnName="trainer" />
+                <ScalarProperty Name="terminateDate" ColumnName="terminateDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MemberShips">
             <EntityTypeMapping TypeName="SmartGymModel.MemberShip">
-              <MappingFragment StoreEntitySet="MemberShip">
-                <ScalarProperty Name="level" ColumnName="level" />
-                <ScalarProperty Name="fee" ColumnName="fee" />
-                <ScalarProperty Name="name" ColumnName="name" />
+              <MappingFragment StoreEntitySet="MemberShips">
                 <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fee" ColumnName="fee" />
+                <ScalarProperty Name="level" ColumnName="level" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sessions">
             <EntityTypeMapping TypeName="SmartGymModel.Session">
-              <MappingFragment StoreEntitySet="Session">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="usage" ColumnName="usage" />
-                <ScalarProperty Name="satisfaction" ColumnName="satisfaction" />
-                <ScalarProperty Name="sessionDate" ColumnName="sessionDate" />
-                <ScalarProperty Name="activityCode" ColumnName="activityCode" />
+              <MappingFragment StoreEntitySet="Sessions">
                 <ScalarProperty Name="memId" ColumnName="memId" />
+                <ScalarProperty Name="activityCode" ColumnName="activityCode" />
+                <ScalarProperty Name="sessionDate" ColumnName="sessionDate" />
+                <ScalarProperty Name="satisfaction" ColumnName="satisfaction" />
+                <ScalarProperty Name="usage" ColumnName="usage" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="SmartGymModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TrainerTypes">
             <EntityTypeMapping TypeName="SmartGymModel.TrainerType">
-              <MappingFragment StoreEntitySet="TrainerType">
-                <ScalarProperty Name="description" ColumnName="description" />
+              <MappingFragment StoreEntitySet="TrainerTypes">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Designations">
-            <EntityTypeMapping TypeName="SmartGymModel.Designation">
-              <MappingFragment StoreEntitySet="Designation">
-                <ScalarProperty Name="activityCode" ColumnName="activityCode" />
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

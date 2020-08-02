@@ -65,10 +65,10 @@ namespace SmartGym.Controllers
                     member.memberShip = "SGM1";
 
                     // Assign gym member to personal trainer
-                    if (referBy != null) {
-                        var trainer = db.Employees.Where(a => a.email == referBy).FirstOrDefault();
-                        member.trainer = trainer.id;
-                    } 
+                    //if (referBy != null) {
+                    //    var trainer = db.Employees.Where(a => a.email == referBy).FirstOrDefault();
+                    //    member.trainer = trainer.id;
+                    //} 
                         
                     member.terminateDate = DateTime.Now.AddYears(contractDuration);
                     db.Members.Add(member);

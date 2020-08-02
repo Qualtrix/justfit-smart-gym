@@ -12,10 +12,10 @@ namespace SmartGym.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HealthRange
+    public partial class HealthRanx
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public HealthRange()
+        public HealthRanx()
         {
             this.Healths = new HashSet<Health>();
         }

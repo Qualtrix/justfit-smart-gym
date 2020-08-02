@@ -155,72 +155,73 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Activity.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Designation.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EmployeeMetaData.cs" />
+    <Compile Include="Models\GymDataMode.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GymDataMode.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GymDataMode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GymDataMode.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GymDataMode.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Health.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HealthMetaData.cs" />
-    <Compile Include="Models\HealthRange.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\HealthRangeMetaData.cs" />
+    <Compile Include="Models\HealthRanx.cs">
+      <DependentUpon>GymDataMode.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Invoice.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\InvoiceMetaData.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Log.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\Member.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MemberMetaData.cs" />
     <Compile Include="Models\MemberShip.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MembershipType_MetaData.cs" />
     <Compile Include="Models\Session.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SessionMetaData.cs" />
-    <Compile Include="Models\SmartGymModels.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SmartGymModels.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SmartGymModels.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\SmartGymModels.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SmartGymModels.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TrainerType.cs">
-      <DependentUpon>SmartGymModels.tt</DependentUpon>
+      <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View Models\HomeView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -254,28 +255,29 @@
     <Content Include="js\demo\datatables-demo.js" />
     <Content Include="js\sb-admin-2.js" />
     <Content Include="js\sb-admin-2.min.js" />
-    <Content Include="Models\SmartGymModels.Context.tt">
+    <Content Include="Models\GymDataMode.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SmartGymModels.edmx</DependentUpon>
-      <LastGenOutput>SmartGymModels.Context.cs</LastGenOutput>
+      <DependentUpon>GymDataMode.edmx</DependentUpon>
+      <LastGenOutput>GymDataMode.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\SmartGymModels.tt">
+    <Content Include="Models\GymDataMode.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SmartGymModels.edmx</DependentUpon>
-      <LastGenOutput>SmartGymModels.cs</LastGenOutput>
+      <DependentUpon>GymDataMode.edmx</DependentUpon>
+      <LastGenOutput>GymDataMode.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\SmartGymModels.edmx.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Dockerfile" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
-    <EntityDeploy Include="Models\SmartGymModels.edmx">
+    <EntityDeploy Include="Models\GymDataMode.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SmartGymModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>GymDataMode.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\SmartGymModels.edmx.diagram">
-      <DependentUpon>SmartGymModels.edmx</DependentUpon>
+    <Content Include="Models\GymDataMode.edmx.diagram">
+      <DependentUpon>GymDataMode.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

@@ -25,7 +25,7 @@
                     @Html.DisplayNameFor(model => model.updated)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.HealthRange.name)
+                    Health Type
                 </th>
             </tr>
 
@@ -42,13 +42,13 @@
                         @Html.DisplayFor(modelItem => item.BMI)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.imageUrl)
+                        <a href="@Html.DisplayFor(modelItem => item.imageUrl)">View Image</a>
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.updated)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.HealthRange.name)
+                        @Html.DisplayFor(modelItem => item.HealthRanx.name)
                     </td>
                 </tr>
             }

@@ -27,9 +27,10 @@ namespace SmartGym.Models
     
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Activity> Activities { get; set; }
+        public virtual DbSet<Designation> Designations { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<HealthRanx> HealthRanges { get; set; }
         public virtual DbSet<Health> Healths { get; set; }
-        public virtual DbSet<HealthRange> HealthRanges { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<Member> Members { get; set; }
@@ -37,6 +38,5 @@ namespace SmartGym.Models
         public virtual DbSet<Session> Sessions { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TrainerType> TrainerTypes { get; set; }
-        public virtual DbSet<Designation> Designations { get; set; }
     }
 }

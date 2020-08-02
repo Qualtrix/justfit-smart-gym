@@ -24,7 +24,7 @@ namespace SmartGym.Controllers
                 totMembers = db.Members.Count(),
                 attendance = (0 / db.Members.Count()),
                 monthlyPayments = 40000,
-                // memberShips = db.MemberShips.ToList()
+                memberShips = db.MemberShips.ToList()
         };
 
             return View(homeView);
@@ -63,6 +63,8 @@ namespace SmartGym.Controllers
             ModelState.AddModelError("LoginError", "Invalid username or password");
             return View();
         }
+
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
