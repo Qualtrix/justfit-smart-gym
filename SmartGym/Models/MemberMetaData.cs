@@ -52,5 +52,9 @@ namespace SmartGym.Models
 
         [Display(Name = "Join Date")] 
         public System.DateTime joinDate { get; set; }
+
+        [Required]
+        [Display(Name = "Trainer Type")]
+        public Nullable<int> trainer { get; set; }
     }
 }

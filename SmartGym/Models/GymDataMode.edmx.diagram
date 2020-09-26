@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="be38d1e63cf743f1b056eab104072f2f" Name="Diagram1">
+      <Diagram DiagramId="be38d1e63cf743f1b056eab104072f2f" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="SmartGymModel.Account" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartGymModel.Activity" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SmartGymModel.Designation" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />

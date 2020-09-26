@@ -44,7 +44,7 @@ namespace SmartGym.Controllers
         // GET: Members/Create
         public ActionResult Create()
         {
-            ViewBag.trainer = new SelectList(db.Employees, "id", "email");
+            ViewBag.trainers = new SelectList(db.Employees, "id", "email");
             return View();
         }
 
@@ -63,6 +63,7 @@ namespace SmartGym.Controllers
                     member.memId = MembershipCodeGen(8, false);
                     member.joinDate = DateTime.Now;
                     member.memberShip = "SGM1";
+                    //member.trainer = 2;
 
                     // Assign gym member to personal trainer
                     //if (referBy != null) {

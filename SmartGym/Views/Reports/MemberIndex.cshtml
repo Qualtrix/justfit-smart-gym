@@ -1,100 +1,77 @@
-﻿@model SmartGym.Models.Member
+﻿@model IEnumerable<SmartGym.Models.Session>
 
 @{
     ViewBag.Title = "MemberIndex";
 }
 
-<h2>MemberIndex</h2>
+    <div class="container">
+        <h4>Member healthh Detailed Report</h4>
 
-<div>
-    @Html.ActionLink("Export To Word", "Reports", new { ReportType = "Word" }) |
-    @Html.ActionLink("Export To Excel", "Reports", new { ReportType = "Excel" }) |
-    @Html.ActionLink("Export To PDF", "Reports", new { ReportType = "PDF" }) 
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
+        <div>
+            @Html.ActionLink("Export To Word", "Reports", new { ReportType = "Word" }) |
+            @Html.ActionLink("Export To Excel", "Reports", new { ReportType = "Excel" }) |
+            @Html.ActionLink("Export To PDF", "Reports", new { ReportType = "PDF" })
+            <hr />
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" />
+                        <button class=" btn btn-primary">Search Products</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
 
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
+                </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Member.name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.sessionDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.satisfaction)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.usage)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Activity.description)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach(var health in Model)
+                        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Member.name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.sessionDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.satisfaction)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.usage)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Activity.description)
+                        </td>
+                    </tr>
+                        }
+                </tbody>
+            </table>
+        </div>
+        <p>
+            @*@Html.ActionLink("Edit", "Edit", new { id = Model.memId }) |
+            @Html.ActionLink("Back to List", "Index")*@
+        </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.surname)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.surname)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sa_id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sa_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.joinDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.joinDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.terminateDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.terminateDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Employee.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Employee.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MemberShip1.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MemberShip1.name)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.memId }) |
-    @Html.ActionLink("Back to List", "Index")*@
-</p>
+    </div>

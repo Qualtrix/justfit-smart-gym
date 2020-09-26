@@ -12,7 +12,7 @@ namespace SmartGym.Models
     using System;
     using System.Collections.Generic;
     using System.Web;
-    
+
     public partial class Health
     {
         public string memId { get; set; }
@@ -24,7 +24,6 @@ namespace SmartGym.Models
         public int id { get; set; }
         public Nullable<int> healthStatus { get; set; }
         public HttpPostedFileBase ImageFile { get; set; }
-
         public virtual HealthRanx HealthRanx { get; set; }
         public virtual Member Member { get; set; }
     }

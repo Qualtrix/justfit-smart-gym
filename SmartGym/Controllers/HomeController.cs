@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using SmartGym.View_Models;
 using System.Data.Entity;
 using SmartGym.Models;
+using SmartGym.BusinessLogic;
 
 namespace SmartGym.Controllers
 {
@@ -16,16 +17,18 @@ namespace SmartGym.Controllers
         public ActionResult Index()
         {
             DateTime currentDate = DateTime.Now;
-        
+            HealthService healthService = new HealthService();
+            InvoiceService invoiceService = new InvoiceService();
 
             HomeView homeView = new HomeView
             {
                 newMembers = 0,
+                avgBMI = healthService.getAvgBMI(),
                 totMembers = db.Members.Count(),
                 attendance = (0 / db.Members.Count()),
-                monthlyPayments = 40000,
+                monthlyPayments = invoiceService.getTotalPayments(),
                 memberShips = db.MemberShips.ToList()
-        };
+            };
 
             return View(homeView);
         }
@@ -76,6 +79,11 @@ namespace SmartGym.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Scanner()
+        {
             return View();
         }
     }

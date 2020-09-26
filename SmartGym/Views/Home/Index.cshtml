@@ -22,7 +22,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Average BMI</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">54.5</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Html.DisplayFor(model => model.avgBMI)</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -39,7 +39,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Month Earnings</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">R 215,000</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">R @Html.DisplayFor(model => model.monthlyPayments)</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -151,13 +151,13 @@
                     </div>
                     <div class="mt-4 text-center small">
                         <span class="mr-2">
-                            <i class="fas fa-circle text-primary"></i> Direct
+                            <i class="fas fa-circle text-primary"></i> Obese
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-success"></i> Social
+                            <i class="fas fa-circle text-success"></i> Healthy
                         </span>
                         <span class="mr-2">
-                            <i class="fas fa-circle text-info"></i> Referral
+                            <i class="fas fa-circle text-info"></i> Skinny
                         </span>
                     </div>
                 </div>
@@ -203,30 +203,24 @@
 
         <div class="col-lg-6 mb-4">
 
-            <!-- Illustrations -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">MemberShip Types</h6>
+            <!-- Collapsable Card Example -->
+            @foreach (var memberShip in Model.memberShips)
+            {
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Accordion -->
+                    <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                        <h6 class="m-0 font-weight-bold text-primary">@Html.DisplayFor(modelItem => memberShip.code) </h6>
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse show" id="collapseCardExample">
+                        <div class="card-body">
+                            <strong>Price: </strong> @Html.DisplayFor(modelItem => memberShip.fee)
+                            <br />
+                            <strong>Name: </strong> @Html.DisplayFor(modelItem => memberShip.name)
+                        </div>
+                    </div>
                 </div>
-                @*<div class="card-body">
-                    @foreach (var item in Model.memberShips)
-                    {
-                        <div class="p-3 bg-gray-100"><a href="/Members/FindAll/@item.code">@item.name</a></div>
-                        <br />
-                    }
-                </div>*@
-            </div>
-
-            <!-- Approach -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Exercise Tips</h6>
-                </div>
-                <div class="card-body">
-                    <p>Smart Gym Tips</p>
-                    <p class="mb-0">Before working with these exercises, you should become familiar with the stretching techinques, especially during weight lifting.</p>
-                </div>
-            </div>
+            }
 
         </div>
     </div>
