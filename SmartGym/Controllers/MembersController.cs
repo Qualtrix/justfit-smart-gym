@@ -117,7 +117,7 @@ namespace SmartGym.Controllers
         public async Task<ActionResult> Edit([Bind(Include = "memId,name,surname,sa_id,email,phone,address,memberShip,joinDate")] Member member)
         {
 
-            if (ModelState.IsValid)
+            if (member != null)
             {
                 db.Entry(member).State = EntityState.Modified;
                 await db.SaveChangesAsync();

@@ -7,16 +7,16 @@
     <div class="container">
         <h2>Activity Manager</h2>
 
-        <p>
+        @*<p>
             @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-        </p>
+        </p>*@
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.description)
+                    @Html.DisplayNameFor(model => model.name)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.name)
+                    @Html.DisplayNameFor(model => model.description)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.include)
@@ -26,22 +26,22 @@
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.include)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.code }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.code }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.code })
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.include)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.code }, htmlAttributes: new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.code }, htmlAttributes: new { @class = "btn btn-success" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.code }, htmlAttributes: new { @class = "btn btn-danger" })
+            </td>
+        </tr>
             }
 
         </table>

@@ -176,6 +176,7 @@
     <Compile Include="Models\Activity.cs">
       <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ActivityMetaData.cs" />
     <Compile Include="Models\Designation.cs">
       <DependentUpon>GymDataMode.tt</DependentUpon>
     </Compile>

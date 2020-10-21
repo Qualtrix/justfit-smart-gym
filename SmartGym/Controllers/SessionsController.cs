@@ -59,7 +59,7 @@ namespace SmartGym.Controllers
         public ActionResult Create()
         {
             ViewBag.activityCode = new SelectList(db.Activities, "code", "description");
-            ViewBag.memId = new SelectList(db.Members, "memId", "name");
+            ViewBag.memId = new SelectList(db.Members, "memId", "memId");
             return View();
         }
 

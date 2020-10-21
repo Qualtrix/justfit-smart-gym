@@ -19,7 +19,6 @@ namespace SmartGym.Models
         [Display(Name = "Activity Code")]
         [Required]
         [StringLength(30)]
-        [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "This entry can only contain letters")]
         public string activityCode { get; set; }
 
         [Display(Name = "Session Date")]

@@ -42,15 +42,14 @@ namespace SmartGym.Controllers
             return View();
         }
 
-        // POST: Activities/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "code,description,name,include")] Activity activity)
         {
+            // string code = generateCode();
             if (ModelState.IsValid)
             {
+
                 db.Activities.Add(activity);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -75,8 +74,6 @@ namespace SmartGym.Controllers
         }
 
         // POST: Activities/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "code,description,name,include")] Activity activity)
@@ -114,6 +111,15 @@ namespace SmartGym.Controllers
             db.Activities.Remove(activity);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        public string generateCode()
+        {
+            var activity = db.Activities.ToList().LastOrDefault();
+
+            int newCode = Convert.ToInt16(activity.code.Substring(3, 2)) + 1;
+
+            return newCode.ToString();
         }
 
         protected override void Dispose(bool disposing)
