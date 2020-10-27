@@ -24,10 +24,10 @@ namespace SmartGym.Models
         [RegularExpression(@"^[a-zA-Z''-'\s]{1,40}$", ErrorMessage = "This entry can only contain letters")]
         public string surname { get; set; }
 
-        [Display(Name = "ID Number")]
-        [Required]
         [StringLength(13)]
-        [RegularExpression(@"^[0-9''-'\s]{1,40}$", ErrorMessage = "This entry can only contain numbers")]
+        [Required]
+        [Display(Name = "ID Number")]
+        [RegularExpression(@"(?<Year>[0,3,4,5,6,7,8,9][0-9])(?<Month>([0][1-9])|([1][0-2]))(?<Day>([0-2][0-9])|([3][0-1]))(?<Gender>[0-9])(?<Series>[0-9]{3})(?<Citizenship>[0-9])(?<Uniform>[0-9])(?<Control>[0-9])", ErrorMessage = "Incorrect ID entered")]
         public string sa_id { get; set; }
 
         [Display(Name = "E-Mail")]
