@@ -46,6 +46,7 @@ namespace SmartGym.Controllers
             string password = form["exampleInputPassword"];
 
             var emp = db.Employees.Where(a => a.email.Equals(email) && a.password.Equals(password)).FirstOrDefault();
+            var member = db.Members.Where(a => a.email.Equals(email) && a.sa_id.Equals(password)).FirstOrDefault();
 
             try
             {
@@ -53,9 +54,17 @@ namespace SmartGym.Controllers
                 {
                     Session["email"] = email;
                     Session["id"] = emp.id;
+                    Session["role"] = "emp";
 
                     return RedirectToAction("Index");
 
+                } else if(emp == null && member != null)
+                {
+                    Session["email"] = email.ToString();
+                    Session["id"] = member.memId.ToString();
+                    Session["role"] = "member";
+
+                    return Redirect("/Members/Details/" + member.memId.ToString());
                 }
             } catch(Exception Ex)
             {
@@ -63,7 +72,7 @@ namespace SmartGym.Controllers
                 return View("Error");
             }
 
-            ModelState.AddModelError("LoginError", "Invalid username or password");
+            ModelState.AddModelError("LoginError", "Incorrect email or password. Details not found on our records");
             return View();
         }
 

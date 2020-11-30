@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using SmartGym.Models;
 using System.IO;
+using SmartGym.Models.DTOs;
 
 namespace SmartGym.Controllers
 {
@@ -44,7 +45,9 @@ namespace SmartGym.Controllers
         {
             Health health = new Health
             {
-                memId = memId
+                memId = memId,
+                height = 80,
+                weight = 20
             };
             return View(health);
         }
@@ -158,6 +161,14 @@ namespace SmartGym.Controllers
             }
 
             return View(db.Healths.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult ScannerResults(Health health)
+        {
+            health.updated = DateTime.Now;
+            health.healthStatus = 4;
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

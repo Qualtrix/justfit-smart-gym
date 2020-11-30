@@ -24,7 +24,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.height, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.height, new { htmlAttributes = new { @class = "form-control", @type="Number", @Min="80", @Max="300", @placeholder="e.g 170 cm" } })
+                        @Html.EditorFor(model => model.height, new { htmlAttributes = new { @class = "form-control", @type="Number", @Min="80", @Max="300", @step="any", @placeholder="Enter height" } })
                         @Html.ValidationMessageFor(model => model.height, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.weight, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.weight, new { htmlAttributes = new { @class = "form-control", @type="Number", @Min="20", @Max="300", @placeholder="e.g 55 Kg" } })
+                        @Html.EditorFor(model => model.weight, new { htmlAttributes = new { @class = "form-control", @type="Number", @Min="20", @Max="300", @step="any", @placeholder="Enter weight" } })
                         @Html.ValidationMessageFor(model => model.weight, "", new { @class = "text-danger" })
                     </div>
                 </div>

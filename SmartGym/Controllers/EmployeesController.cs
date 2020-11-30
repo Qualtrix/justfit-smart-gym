@@ -40,50 +40,51 @@ namespace SmartGym.Controllers
         // GET: Employees/Create
         public ActionResult Create()
         {
-            ViewBag.id = new SelectList(db.Designations, "id", "activityCode");
-            ViewBag.role = new SelectList(db.TrainerTypes, "id", "name");
+            // ViewBag.id = new SelectList(db.Designations, "id", "activityCode");
+            // ViewBag.role = new SelectList(db.TrainerTypes, "id", "name");
             return View();
         }
 
         // POST: Employees/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "id,name,surname,email,phone,address,postalCode,role")] Employee employee)
+        public async Task<ActionResult> Create([Bind(Include = "id,name,surname,email,phone,address,postalCode,role")] Employee employee, FormCollection form)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-  
                     employee.hireDate = DateTime.UtcNow;
-                    var jobType = db.TrainerTypes.Where(a => a.id == employee.role).FirstOrDefault();
+                    employee.salary = 10000;
+                    employee.password = "trainer2020";
+                    //var jobType = db.TrainerTypes.Where(a => a.id == employee.role).FirstOrDefault();
 
-                    switch (jobType.name)
-                    {
-                        case Job.BranchManager:
-                            employee.salary = 15000.00;
-                            employee.password = "trainer";
-                            break;
+                    //switch (jobType.name)
+                    //{
+                    //    case Job.BranchManager:
+                    //        employee.salary = 15000.00;
+                    //        employee.password = "trainer";
+                    //        break;
 
-                        case Job.Worker:
-                            employee.salary = 8000.00;
-                            employee.password = "worker" + DateTime.Now.Year.ToString();
-                            break;
+                    //    case Job.Worker:
+                    //        employee.salary = 8000.00;
+                    //        employee.password = "worker" + DateTime.Now.Year.ToString();
+                    //        break;
 
-                        case Job.Cleaner:
-                            employee.salary = 3000.00;
-                            break;
+                    //    case Job.Cleaner:
+                    //        employee.salary = 3000.00;
+                    //        break;
 
-                        case Job.Personal_Trainer:
-                            employee.password = "trainer" + DateTime.Now.Year.ToString();
-                            employee.salary = 6000.00;
-                            break;
+                    //    case Job.Personal_Trainer:
+                    //        employee.password = "trainer" + DateTime.Now.Year.ToString();
+                    //        employee.salary = 6000.00;
+                    //        break;
 
-                        default:
-                            employee.password = "worker";
-                            employee.salary = 1000.00;
-                            break;
-                    }
+                    //    default:
+                    //        employee.password = "worker";
+                    //        employee.salary = 1000.00;
+                    //        break;
+                    //}
 
                     db.Employees.Add(employee);
                     await db.SaveChangesAsync();

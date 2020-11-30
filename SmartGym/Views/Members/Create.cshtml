@@ -18,7 +18,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @placeholder="Enter Name" } })
+                    @Html.EditorFor(model => model.name, new { htmlAttributes = new { @class = "form-control", @placeholder="Enter Name", @minlength = "2", @maxlength = "20" } })
                     @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -26,7 +26,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.surname, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.surname, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Surname" } })
+                    @Html.EditorFor(model => model.surname, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Surname", @minlength = "2", @maxlength = "20" } })
                     @Html.ValidationMessageFor(model => model.surname, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -34,7 +34,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.sa_id, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.sa_id, new { htmlAttributes = new { @class = "form-control", @placeholder = "SA ID" } })
+                    @Html.EditorFor(model => model.sa_id, new { htmlAttributes = new { @class = "form-control", @placeholder = "SA ID", @minlength="13", @maxlength="13" } })
                     @Html.ValidationMessageFor(model => model.sa_id, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -48,9 +48,21 @@
             </div>
 
             <div class="form-group">
+                <label class="control-label col-md-2">
+                    Choose gender type
+                </label>
+                <div class="col-md-10">
+                    <label>Female</label>
+                    <input type="radio" name="gender" value="female" />
+                    <label>Male</label>
+                    <input type="radio" name="gender" value="male" />
+                </div>
+            </div>
+
+            <div class="form-group">
                 @Html.LabelFor(model => model.phone, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Phone" } })
+                    @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Phone", @minlength="10", @maxlength="10" } })
                     @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -102,6 +114,7 @@
         </div>
     }
 </div>
+
 <script>
     // This example requires the Places library. Include the libraries=places
     // parameter when you first load the API. For example:
@@ -182,5 +195,5 @@
             });
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC4CXmlD1Zf0M8R1rYvJhDBWkNfKguCV8&libraries=places&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABCSgpnouVjEz8pqwxGj1qeg7EZIZaFBg&libraries=places&callback=initMap"
         async defer></script>

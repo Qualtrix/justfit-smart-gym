@@ -23,11 +23,11 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">AI Body Scanner</h1>
                                     </div>
-                                    <form class="user" action="/Home/Login" method="post">
+                                    <div class="user">
                                         <button type="button" class="btn btn-google btn-user btn-block" onclick="init()">Start Scanner</button>
                                         <hr />
-                                        <button class="btn btn-primary btn-user btn-block">Save Results</button>
-                                    </form>
+                                        <button class="btn btn-primary btn-user btn-block" onclick="onSubmit()">Save Results</button>
+                                    </div>
                                     <div class="text-center">
                                         <div id="label-container"></div>
                                     </div>
@@ -93,9 +93,25 @@
         const prediction = await model.predict(webcam.canvas);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2) * 100 + "%";
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
+    }
+
+    async function onSubmit() {
+        $.ajax({
+            type: "POST",
+            url: "/Healths/ScannerResults",
+
+            data: {
+                memId: 'SXXBSCPH',
+                height: 80,
+                weight: 20,
+                BMI: 32,
+                updated: new Date().getDate()
+            },
+
+        })
     }
 </script>
 

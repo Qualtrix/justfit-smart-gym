@@ -81,15 +81,6 @@ namespace SmartGym.Controllers
             }
             catch (Exception Ex)
             {
-                Log log = new Log
-                {
-                    errorDate = DateTime.Now,
-                    errorMsg = Ex.Message,
-                    path = Ex.Source
-                };
-
-                db.Logs.Add(log);
-                db.SaveChanges();
                 return View("Error");
             }
 

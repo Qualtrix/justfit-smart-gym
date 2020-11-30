@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.Reporting.WebForms;
 using SmartGym.BusinessLogic;
 using SmartGym.Models;
+using SmartGym.View_Models;
 
 namespace SmartGym.Controllers
 {
@@ -23,7 +24,10 @@ namespace SmartGym.Controllers
 
         public ActionResult SessionReport()
         {
-            return View();
+            HealthReportView reportView = new HealthReportView();
+            reportView.members = db.Members.ToList();
+
+            return View(reportView);
         }
     }
 }

@@ -26,128 +26,131 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        @if (Session["role"] == "emp")
+        {
+            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-dumbbell"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Smart Gym <sup>2.0</sup></div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/Home/Index">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Account Manager
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Membership</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="/Members/Create">Add Member</a>
-                        <a class="collapse-item" href="/Employees/Create">New Employee</a>
-                        <a class="collapse-item" href="/Employees/Index">View Employees</a>
-                        <a class="collapse-item" href="/Members/Index">View Members</a>
-                        <a class="collapse-item" href="/Healths/Index">Member Health Card</a>
+                <!-- Sidebar - Brand -->
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <i class="fas fa-dumbbell"></i>
                     </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Billing</span>
+                    <div class="sidebar-brand-text mx-3">Smart Gym <sup>2.0</sup></div>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="/Invoices/Create">Create Invoice</a>
-                        <a class="collapse-item" href="/Invoices/Index">View Invoices</a>
-                        <a class="collapse-item" href="/Invoices/Index">Unpaid Memberships</a>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider my-0">
+
+                <!-- Nav Item - Dashboard -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/Index">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Account Manager
+                </div>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Membership</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Custom Components:</h6>
+                            <a class="collapse-item" href="/Members/Create">Add Member</a>
+                            <a class="collapse-item" href="/Employees/Create">New Employee</a>
+                            <a class="collapse-item" href="/Employees/Index">View Employees</a>
+                            <a class="collapse-item" href="/Members/Index">View Members</a>
+                            <a class="collapse-item" href="/Healths/Index">Member Health Card</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Health Manager
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Session Tracker</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Sessions:</h6>
-                        <a class="collapse-item" href="/Sessions/Index">Session Table</a>
-                        <a class="collapse-item" href="/Activities/Index">Activities</a>
-                        <a class="collapse-item" href="#">Add Activity</a>
-                        @*<div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Membership Accounts:</h6>
-                        <a class="collapse-item" href="#">Membership Table</a>
-                        <a class="collapse-item" href="#">Add Membership Type</a>*@
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-wrench"></i>
+                        <span>Billing</span>
+                    </a>
+                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Custom Utilities:</h6>
+                            <a class="collapse-item" href="/Invoices/Create">Create Invoice</a>
+                            <a class="collapse-item" href="/Invoices/Index">View Invoices</a>
+                            <a class="collapse-item" href="/Invoices/Index">Unpaid Memberships</a>
+                        </div>
                     </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Health Manager
                 </div>
-            </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="/Home/Scanner">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Body Scan</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/Reports/MemberIndex">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Health Reports</span>
-                </a>
-            </li>
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>Session Tracker</span>
+                    </a>
+                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Sessions:</h6>
+                            <a class="collapse-item" href="/Sessions/Index">Session Table</a>
+                            <a class="collapse-item" href="/Activities/Index">Activities</a>
+                            <a class="collapse-item" href="#">Add Activity</a>
+                            @*<div class="collapse-divider"></div>
+                            <h6 class="collapse-header">Membership Accounts:</h6>
+                            <a class="collapse-item" href="#">Membership Table</a>
+                            <a class="collapse-item" href="#">Add Membership Type</a>*@
+                        </div>
+                    </div>
+                </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="/Reports/SessionReport">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Fitness Report</span>
-                </a>
-            </li>
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Scanner">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Body Scan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Reports/MemberIndex">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Health Detailed Report</span>
+                    </a>
+                </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/Reports/SessionReport">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Fitness Summary Report</span>
+                    </a>
+                </li>
 
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
+                <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
 
-        </ul>
+                <!-- Sidebar Toggler (Sidebar) -->
+                <div class="text-center d-none d-md-inline">
+                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+                </div>
+
+            </ul>
+        }
         <!-- End of Sidebar -->
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -329,7 +332,7 @@
                                 </a>
                             </div>
                         </li>
-            
+
                     </ul>
 
                 </nav>
@@ -360,7 +363,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Ready To Leave?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -368,7 +371,7 @@
                     <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
+                        <a class="btn btn-primary" href="/home/login">Logout</a>
                     </div>
                 </div>
             </div>

@@ -34,6 +34,7 @@ namespace SmartGym.Models
         [Required]
         [StringLength(50)]
         [EmailAddress]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "Invalid E-mail address")]
         public string email { get; set; }
 
         [Display(Name = "Phone")]

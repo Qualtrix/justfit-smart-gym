@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SmartGym.Models.Session>
+﻿@model SmartGym.View_Models.HealthReportView
 
 @{
     ViewBag.Title = "SessionReport";
@@ -50,7 +50,7 @@
 
     </style>
     <div class="container">
-        <h4>Health Summary Report</h4>
+        <h4>Fitnese Summary Report</h4>
         <hr />
         <!-- Content Row -->
         <div class="row">
@@ -144,31 +144,23 @@
                                 <!-- Date Filter Start -->
                                 <div>
                                     <b>Start Date</b>
-                                    <input type="date" class="form-control" />
+                                    <input type="date" class="form-control" min="2000-01-01" max="2020-12-01"  />
                                     <br />
                                     <b>End Date</b>
-                                    <input type="date" class="form-control" />
+                                    <input type="date" class="form-control" min="2000-01-01" max="2020-12-01" />
                                     <br />
                                 </div>
                                 <!-- Date Filter End -->
                                 <!-- Category Filter Start -->
-                                <b>Filter By: Health Category</b>
-                                <select class="form-control">
-                                    <option selected>Please select a category</option>
-                                    <option>Underweight</option>
-                                    <option>Health</option>
-                                    <option>Overweigh</option>
-                                    <option>Obese</option>
-                                </select>
-                                <br />
                                 <!-- Category Filter End -->
                                 <!-- Category Filter Start -->
                                 <b>Filter By: Member</b>
                                 <select class="form-control">
                                     <option selected>Please select a member</option>
-                                    <option>Thato Lesetla</option>
-                                    <option>Shaun Parker</option>
-                                    <option>Lerato Skosana</option>
+                                    @foreach(var item in Model.members)
+                                    {
+                                        <option>@Html.DisplayFor(modelItem => item.name) - @Html.DisplayFor(modelItem => item.memId)</option>
+                                    }
                                 </select>
                                 <br />
                                 <button class="btn btn-primary" onclick="changeValues()">Filter</button>
@@ -242,19 +234,19 @@
             },
             series: [{
                 name: 'Underweight',
-                data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+                data: [49, 71, 106, 129, 144, 17, 135, 148, 216, 194, 95, 54]
 
             }, {
                 name: 'Healthy',
-                data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+                data: [83, 78, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
 
             }, {
                 name: 'Overweight',
-                data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+                data: [48, 38, 39, 41, 47, 48, 59, 59, 52, 65, 59, 51]
 
             }, {
                 name: 'Obese',
-                data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+                data: [42, 33, 34, 39, 52, 75, 57, 60, 47, 39, 46, 51]
 
             }]
         });

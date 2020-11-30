@@ -8,17 +8,17 @@
         <h4>Member healthh Detailed Report</h4>
 
         <div>
-            @Html.ActionLink("Export To Word", "Reports", new { ReportType = "Word" }) |
-            @Html.ActionLink("Export To Excel", "Reports", new { ReportType = "Excel" }) |
-            @Html.ActionLink("Export To PDF", "Reports", new { ReportType = "PDF" })
             <hr />
             <div class="row">
-                <div class="form-group">
-                    <div class="col-md-8">
-                        <input type="text" class="form-control" />
-                        <button class=" btn btn-primary">Search Products</button>
-                    </div>
+                <div class="col-md-4">
+                    <label>Start Date:</label>
+                    <input type="date" class="form-control" name="startDate" id="startDate" min="2020-01-12" max="2020-12-01"/>
                 </div>
+                <div class="col-md-4">
+                    <label>End Date:</label>
+                    <input type="date" class="form-control" name="endDate" id="endDate" min="2020-01-12" max="2020-12-01"/>
+                </div>
+                <button class="btn btn-primary" >Filter </button>
             </div>
             <div class="row">
                 <div class="col-md-4">
@@ -46,23 +46,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                        @foreach(var health in Model)
+                        @foreach(var session in Model)
                         {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Member.name)
+                            @Html.DisplayFor(modelItem => session.Member.memId)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.sessionDate)
+                            @Html.DisplayFor(modelItem => session.sessionDate)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.satisfaction)
+                            @Html.DisplayFor(modelItem => session.satisfaction)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.usage)
+                            @Html.DisplayFor(modelItem => session.usage)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Activity.description)
+                            @Html.DisplayFor(modelItem => session.Activity.description)
                         </td>
                     </tr>
                         }
