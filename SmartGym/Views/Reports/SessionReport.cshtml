@@ -122,7 +122,7 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Members</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">56</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.members.Count()</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -188,6 +188,24 @@
         </div>
     </div>
     <script>
+        var data = [{
+            name: 'Underweight',
+            data: [49, 71, 106, 129, 144, 17, 135, 148, 216, 194, 95, 54]
+
+        }, {
+            name: 'Healthy',
+            data: [83, 78, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
+
+        }, {
+            name: 'Overweight',
+            data: [48, 38, 39, 41, 47, 48, 59, 59, 52, 65, 59, 51]
+
+        }, {
+            name: 'Obese',
+            data: [42, 33, 34, 39, 52, 75, 57, 60, 47, 39, 46, 51]
+
+            }];
+
         Highcharts.chart('container', {
             chart: {
                 type: 'column'
@@ -232,26 +250,16 @@
                     borderWidth: 0
                 }
             },
-            series: [{
-                name: 'Underweight',
-                data: [49, 71, 106, 129, 144, 17, 135, 148, 216, 194, 95, 54]
-
-            }, {
-                name: 'Healthy',
-                data: [83, 78, 98, 93, 106, 84, 105, 104, 91, 83, 106, 92]
-
-            }, {
-                name: 'Overweight',
-                data: [48, 38, 39, 41, 47, 48, 59, 59, 52, 65, 59, 51]
-
-            }, {
-                name: 'Obese',
-                data: [42, 33, 34, 39, 52, 75, 57, 60, 47, 39, 46, 51]
-
-            }]
+            series: data
         });
 
         function changeValues() {
-            this.Highcharts.series[0].name = 'Under';
+            for (let i = 0; i < data.length; i++) {
+
+                for (let m = 0; m < data[i].data.length; m++) {
+                    console.log(this.data[i].data[m]);
+                    this.data[i].data[m] = 0;
+                }
+            }
         }
     </script>

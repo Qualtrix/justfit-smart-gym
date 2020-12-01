@@ -166,8 +166,19 @@ namespace SmartGym.Controllers
         [HttpPost]
         public ActionResult ScannerResults(Health health)
         {
-            health.updated = DateTime.Now;
-            health.healthStatus = 4;
+            try
+            {
+                health.memId = Session["id"].ToString();
+                health.updated = DateTime.Now;
+
+                db.Healths.Add(health);
+                db.SaveChanges();
+            } catch(Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+
+                return View("error");
+            }
             return RedirectToAction("Index");
         }
 
